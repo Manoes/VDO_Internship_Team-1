@@ -34,7 +34,7 @@ public class PlayerRandomAutoShooter : MonoBehaviour
 
     private void TryShoot()
     {
-        if(attackRange ==  null) return;
+        if(attackRange == null) return;
         if(projectilePrefab == null) return;
 
         Collider2D[] enemiesInsideRange = Physics2D.OverlapCircleAll(
@@ -61,5 +61,13 @@ public class PlayerRandomAutoShooter : MonoBehaviour
 
         if (projectile.TryGetComponent<Projectile>(out Projectile projectileObject))
             projectileObject.Initialize(direction);
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        if(attackRange == null) return;
+
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, attackRange.AttackRadius);
     }
 }

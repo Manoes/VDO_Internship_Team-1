@@ -11,12 +11,13 @@ public class PlayerHealth : Health
     protected override void Awake()
     {
         base.Awake();
-
         playerController = GetComponent<PlayerController>();
     }
 
     public override void TakeDamage(int damage)
-    {
+    {   
+        if(isDead) return;
+
         if(Time.time < lastDamageTime + damageCooldown)
             return;
         
@@ -31,7 +32,6 @@ public class PlayerHealth : Health
     protected override void Die()
     {
         base.Die();
-
         print("[PlayerHealth] Player Died.");
     }
 }
