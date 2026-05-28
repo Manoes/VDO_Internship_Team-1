@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8403314826532945930}
   - component: {fileID: 2702872576413941121}
   - component: {fileID: 3903980890256292464}
+  - component: {fileID: 365471037339413585}
   - component: {fileID: 4803284200238738789}
   - component: {fileID: -4922744040836579294}
   m_Layer: 6
@@ -35,6 +36,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4788235435657717036}
+  - {fileID: 9149998439778846439}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &8403314826532945930
@@ -124,6 +126,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMover
   moveSpeed: 3
   stopDistance: 4
+--- !u!114 &365471037339413585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1302047258711748758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 504794901ca05cf45bea265916deecb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyShooter
+  firePoint: {fileID: 9149998439778846439}
+  projectilePrefab: {fileID: 1302822289744774699, guid: a759df4b2517f264086f573fa132d879, type: 3}
+  detectionRange: 8
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  fireRate: 2
+  projectileSpawnDistance: 0.75
 --- !u!114 &4803284200238738789
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -251,3 +273,34 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!1 &5862880815522013455
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9149998439778846439}
+  m_Layer: 6
+  m_Name: ShootPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9149998439778846439
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5862880815522013455}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.7, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 282697594599871264}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
