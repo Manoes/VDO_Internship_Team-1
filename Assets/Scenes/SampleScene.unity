@@ -598,6 +598,9 @@ MonoBehaviour:
   - prefab: {fileID: 1302822289744774699, guid: 7a40005ac047aaa45a098d46f9c60d47, type: 3}
     initialSize: 10
     canExpand: 1
+  - prefab: {fileID: 1302822289744774699, guid: a759df4b2517f264086f573fa132d879, type: 3}
+    initialSize: 10
+    canExpand: 1
 --- !u!1 &1104790855
 GameObject:
   m_ObjectHideFlags: 0
@@ -730,6 +733,18 @@ MonoBehaviour:
   - prefab: {fileID: 1302047258711748758, guid: fc93fc91557a9b846983fe542eba40e4, type: 3}
     initialSize: 10
     canExpand: 1
+  - prefab: {fileID: 1302047258711748758, guid: 1d145e29989234c49bca2d98f5a2c595, type: 3}
+    initialSize: 10
+    canExpand: 1
+  - prefab: {fileID: 1302047258711748758, guid: 11107baf430dd1946b6500ce71caca3b, type: 3}
+    initialSize: 10
+    canExpand: 1
+  - prefab: {fileID: 1302047258711748758, guid: 53ce0dcbf06e2fd4e970afa7d8e33686, type: 3}
+    initialSize: 10
+    canExpand: 1
+  - prefab: {fileID: 1302047258711748758, guid: fc93fc91557a9b846983fe542eba40e4, type: 3}
+    initialSize: 10
+    canExpand: 1
 --- !u!1 &1612537758
 GameObject:
   m_ObjectHideFlags: 0
@@ -833,22 +848,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
   player: {fileID: 1002402014}
   enemies:
+  - enemyPrefab: {fileID: 1302047258711748758, guid: 53ce0dcbf06e2fd4e970afa7d8e33686, type: 3}
+    unlockLevel: 1
+    baseWeight: 2
+    weightIncreasePerLevel: 2
   - enemyPrefab: {fileID: 1302047258711748758, guid: fc93fc91557a9b846983fe542eba40e4, type: 3}
     unlockLevel: 1
-    baseWeight: 20
-    weightIncreasePerLevel: 0
+    baseWeight: 1
+    weightIncreasePerLevel: 1
   - enemyPrefab: {fileID: 1302047258711748758, guid: 1d145e29989234c49bca2d98f5a2c595, type: 3}
-    unlockLevel: 2
+    unlockLevel: 1
     baseWeight: 8
     weightIncreasePerLevel: 1
   - enemyPrefab: {fileID: 1302047258711748758, guid: 11107baf430dd1946b6500ce71caca3b, type: 3}
     unlockLevel: 4
     baseWeight: 4
     weightIncreasePerLevel: 1
-  - enemyPrefab: {fileID: 1302047258711748758, guid: 53ce0dcbf06e2fd4e970afa7d8e33686, type: 3}
-    unlockLevel: 6
-    baseWeight: 2
-    weightIncreasePerLevel: 2
   spawnRadius: 10
   baseSpawnInterval: 1.5
   minSpawnInterval: 0.25
