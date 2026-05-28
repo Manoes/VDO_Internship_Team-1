@@ -6,7 +6,7 @@ public class DamageDealer : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        Health health = collision.GetComponent<Health>();
+        PlayerHealth health = collision.GetComponent<PlayerHealth>();
 
         if(health != null)
             health.TakeDamage(damage);
