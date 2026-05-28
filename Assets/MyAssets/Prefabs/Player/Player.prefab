@@ -286,6 +286,7 @@ GameObject:
   - component: {fileID: 7419334358789414985}
   - component: {fileID: 4014694039358713350}
   - component: {fileID: 1285478499202935225}
+  - component: {fileID: 6609090708374337976}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -511,6 +512,9 @@ MonoBehaviour:
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
+  OnHealthChanged:
+    m_PersistentCalls:
+      m_Calls: []
   damageCooldown: 0.5
 --- !u!114 &1285478499202935225
 MonoBehaviour:
@@ -542,6 +546,21 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &6609090708374337976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4147186503263419005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4833a16bc7114d44780e3b780cc24295, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerStats
+  helperPrefab: {fileID: 5433920138189361063, guid: 8b2d709c8e12ef343925d464d8540e3a, type: 3}
+  helperOrbitRadius: 2
+  helperOrbitSpeed: 60
 --- !u!1 &5776926478223927963
 GameObject:
   m_ObjectHideFlags: 0

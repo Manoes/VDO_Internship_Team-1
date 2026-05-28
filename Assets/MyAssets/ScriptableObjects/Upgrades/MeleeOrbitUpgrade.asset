@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d2bb8d6ddae34f43accd06a24b8f153, type: 3}
+  m_Name: MeleeOrbitUpgrade
+  m_EditorClassIdentifier: Assembly-CSharp::MeleeOrbitUpgrade
+  upgradeName: Melee Orbit
+  description: Adds an orbiting melee weapon that strikes nearby enemies.
+  icon: {fileID: 0}
+  meleeWeaponPrefab: {fileID: 6459178342071091614, guid: 21d9d5517579ad1488447d97c1cf9167, type: 3}
+  orbitRadius: 1.5
+  orbitSpeed: 150
