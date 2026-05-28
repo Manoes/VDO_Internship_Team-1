@@ -53,11 +53,11 @@ Material:
     - _power: 1.1
     m_Colors:
     - White: {r: 1, g: 1, b: 1, a: 1}
-    - _BaseColor: {r: 0, g: 0, b: 0, a: 1}
+    - _BaseColor: {r: 0.014390823, g: 0.24528301, b: 0, a: 1}
     - _RunesColor: {r: 0.7843136, g: 3.2156863, b: 0.7843136, a: 1}
     - _SecondBaseColor: {r: 0, g: 0, b: 0, a: 1}
     - _Speed: {r: 0.1, g: 0, b: 0, a: 0}
-    - _Tiling: {r: 2.37, g: 0.1, b: 0, a: 0}
+    - _Tiling: {r: 1, g: 0.1, b: 0, a: 0}
     - _offset: {r: 0.025, g: 0.025, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
