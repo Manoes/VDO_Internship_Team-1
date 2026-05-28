@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e7d52080fc73444ab66ad9088833f5c, type: 3}
+  m_Name: MoveSpeedUpgrade
+  m_EditorClassIdentifier: Assembly-CSharp::MoveSpeedUpgrade
+  upgradeName: Movement Speed
+  description: +20% Movement Speed
+  icon: {fileID: 0}
+  bonusPercent: 0.2
