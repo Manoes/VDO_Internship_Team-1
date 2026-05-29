@@ -441,6 +441,7 @@ Transform:
   m_Children:
   - {fileID: 1273157343}
   - {fileID: 1088287583}
+  - {fileID: 1788770162}
   m_Father: {fileID: 926932330}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &820343856
@@ -460,6 +461,8 @@ MonoBehaviour:
     pooler: {fileID: 1273157344}
   - label: Projectile Pooler
     pooler: {fileID: 1088287584}
+  - label: Boss Pooler
+    pooler: {fileID: 1788770163}
 --- !u!1 &926932329
 GameObject:
   m_ObjectHideFlags: 0
@@ -493,6 +496,8 @@ Transform:
   - {fileID: 1688477266}
   - {fileID: 1902699427}
   - {fileID: 33496853}
+  - {fileID: 1368758579}
+  - {fileID: 1347873062}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1002402014 stripped
@@ -599,6 +604,9 @@ MonoBehaviour:
     canExpand: 1
   - prefab: {fileID: 1302822289744774699, guid: a759df4b2517f264086f573fa132d879, type: 3}
     initialSize: 10
+    canExpand: 1
+  - prefab: {fileID: 8082164033509451392, guid: 5bd3356c39c01964a89ba4fc4e5a2626, type: 3}
+    initialSize: 20
     canExpand: 1
 --- !u!1 &1104790855
 GameObject:
@@ -744,6 +752,105 @@ MonoBehaviour:
   - prefab: {fileID: 1302047258711748758, guid: fc93fc91557a9b846983fe542eba40e4, type: 3}
     initialSize: 10
     canExpand: 1
+--- !u!1 &1347873061
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1347873062}
+  - component: {fileID: 1347873063}
+  m_Layer: 0
+  m_Name: '[[[DEBUG]]] BossTestSpawner'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1347873062
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1347873061}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 926932330}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1347873063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1347873061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4f086bcfb94279498288bd6416642a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BossTestSpawner
+  player: {fileID: 1002402014}
+  wormBossPrefab: {fileID: 5241944115384881793, guid: 500c44bec43ab2748accc82d552c8145, type: 3}
+  trojanBossPrefab: {fileID: 4065206293655921270, guid: 794cae60f0c6946438f50d5eadcad0cd, type: 3}
+  ddosBossPrefab: {fileID: 634130989906695723, guid: ad2b6ece0ff4b124a84353c32e5f6666, type: 3}
+  hackerBossPrefab: {fileID: 0}
+  testBossLevel: 5
+  spawnDistance: 10
+--- !u!1 &1368758578
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1368758579}
+  - component: {fileID: 1368758580}
+  m_Layer: 0
+  m_Name: BossSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1368758579
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1368758578}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 926932330}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1368758580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1368758578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62a634846a97732479bfc97466ff36e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BossSpawner
+  player: {fileID: 0}
+  bossPrefabs: []
+  bossEveryXLevels: 5
+  spawnRadius: 12
 --- !u!1 &1688477265
 GameObject:
   m_ObjectHideFlags: 0
@@ -822,6 +929,66 @@ MonoBehaviour:
       m_Calls: []
   currentLevel: 1
   spawnIntervalDecreasePerLevel: 0.08
+--- !u!1 &1788770161
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1788770162}
+  - component: {fileID: 1788770163}
+  m_Layer: 0
+  m_Name: BossPooler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1788770162
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1788770161}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 820343855}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1788770163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1788770161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed829fac5ace7d54ab6ec53642448d41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObjectPooler
+  pools:
+  - prefab: {fileID: 5241944115384881793, guid: 500c44bec43ab2748accc82d552c8145, type: 3}
+    initialSize: 5
+    canExpand: 1
+  - prefab: {fileID: 4389898035057025944, guid: bbd1d5ea210ec5a468483dbc41761f2a, type: 3}
+    initialSize: 5
+    canExpand: 1
+  - prefab: {fileID: 4065206293655921270, guid: 794cae60f0c6946438f50d5eadcad0cd, type: 3}
+    initialSize: 5
+    canExpand: 1
+  - prefab: {fileID: 8758026207269206733, guid: 1ba1756888267af4685981794f958eae, type: 3}
+    initialSize: 10
+    canExpand: 1
+  - prefab: {fileID: 634130989906695723, guid: ad2b6ece0ff4b124a84353c32e5f6666, type: 3}
+    initialSize: 5
+    canExpand: 1
 --- !u!1 &1902699426
 GameObject:
   m_ObjectHideFlags: 0
