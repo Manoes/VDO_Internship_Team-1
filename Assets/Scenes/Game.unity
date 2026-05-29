@@ -194,6 +194,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1532277}
   m_CullTransparentMesh: 1
+--- !u!1 &41567363
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 41567365}
+  - component: {fileID: 41567364}
+  m_Layer: 0
+  m_Name: --- UpgradeManager ---
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &41567364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 41567363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3dfe154da0fa4864db7ba4c78be5e5c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UpgradeManager
+  upgradePool: []
+  upgradeUI: {fileID: 0}
+  OnUpgradeSelected:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!4 &41567365
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 41567363}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &91297941
 GameObject:
   m_ObjectHideFlags: 0
@@ -1843,7 +1892,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 77.68005, y: 39.73999}
+  m_AnchoredPosition: {x: 74, y: 39.735}
   m_SizeDelta: {x: -155.37146, y: -103.2749}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &803840854
@@ -3487,7 +3536,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0.4, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 2.0474854, y: -0.017501831}
+  m_AnchoredPosition: {x: 2.0474854, y: -0.01751709}
   m_SizeDelta: {x: -4.095, y: 0.0392}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1383061341
@@ -6099,7 +6148,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -89.60004, y: -0.00002670288}
+  m_AnchoredPosition: {x: -93.603, y: -0.000030517578}
   m_SizeDelta: {x: -360.07892, y: -33.215}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2135459307
@@ -6220,5 +6269,6 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 779694455}
+  - {fileID: 41567365}
   - {fileID: 1423915697}
   - {fileID: 1895239272}
