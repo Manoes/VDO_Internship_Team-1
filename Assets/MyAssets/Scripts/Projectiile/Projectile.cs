@@ -6,6 +6,9 @@ public class Projectile : PooledProjectile
     [SerializeField] private float speed = 12f;
     [SerializeField] private int damage = 1;
 
+    [Header("Damage Filter")]
+    [SerializeField] private LayerMask damageLayers;
+
     private Rigidbody2D rb;
 
     protected override void OnEnable()
@@ -36,6 +39,9 @@ public class Projectile : PooledProjectile
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if((damageLayers.value & (1 << other.gameObject.layer)) == 0) 
+            return;
+
         Health health = other.GetComponent<Health>();
 
         if (health == null) return;
