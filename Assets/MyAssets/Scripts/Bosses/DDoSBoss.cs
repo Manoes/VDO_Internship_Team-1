@@ -20,21 +20,24 @@ public class DDoSBoss : BossBase
     [SerializeField] private float intervalDecreasePerLevel = 0.05f;
 
     [Header("Radial Burst")]
+    [SerializeField] private int radialBurstWaves = 3;
     [SerializeField] private int baseRadialBulletCount = 12;
     [SerializeField] private int extraRadialBulletsEveryXLevels = 5;
+    [SerializeField] private float radialBurstWaveDelay = 0.15f;
+    [SerializeField] private float radialWaveRotationOffset = 15f;
     [SerializeField] private float radialRotationSpeed = 20f;
 
     [Header("Four Way Fan")]
+    [SerializeField] private int fanWaves = 3;
     [SerializeField] private int fanBulletsPerDirection = 5;
     [SerializeField] private float fanAngle = 45f;
-    [SerializeField] private int fanWaves = 5;
     [SerializeField] private float fanWaveDelay = 0.12f;
     [SerializeField] private float fanWaveAngleStep = 8f;
 
     [Header("Bullet Wall")]
+    [SerializeField] private int wallWaves = 3;
     [SerializeField] private int wallBulletCount = 9;
     [SerializeField] private float wallSpacing = 0.75f;
-    [SerializeField] private int wallWaves = 5;
     [SerializeField] private float wallWaveDelay = 0.12f;
     [SerializeField] private float wallSideOffsetPerWave = 0.4f;
 
@@ -65,7 +68,7 @@ public class DDoSBoss : BossBase
         switch (pattern)
         {
             case AttackPattern.RadialBurst:
-                FireRadialBurst();
+                StartCoroutine(FireRadialBurst());
                 break;
 
             case AttackPattern.FourWayFan:
@@ -83,18 +86,32 @@ public class DDoSBoss : BossBase
             currentAttackIndex = 0;
     }
 
-    private void FireRadialBurst()
+    private IEnumerator FireRadialBurst()
     {
-        int bulletCount =
-            baseRadialBulletCount + bossLevel / extraRadialBulletsEveryXLevels;
+        isAttacking = true;
 
+        int bulletCount =
+            baseRadialBulletCount +
+            bossLevel / extraRadialBulletsEveryXLevels;
+        
         float angleStep = 360f / bulletCount;
 
-        for (int i = 0; i < bulletCount; i++)
+        for (int wave = 0; wave < radialBurstWaves; wave++)
         {
-            float angle = radialAngleOffset + angleStep * i;
-            FireProjectile(angle);
+            float waveOffset =
+                radialAngleOffset +
+                wave * radialWaveRotationOffset;
+
+            for (int i = 0; i < bulletCount; i++)
+            {
+                float angle = radialAngleOffset + angleStep * i;
+                FireProjectile(angle);
+            }
+
+            yield return new WaitForSeconds(radialBurstWaveDelay);
         }
+
+        isAttacking = false;
     }
 
     private IEnumerator FireFourWayFan()
@@ -139,7 +156,7 @@ public class DDoSBoss : BossBase
 
         GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
 
-        if(playerObject == null)
+        if (playerObject == null)
         {
             isAttacking = false;
             yield break;
@@ -151,7 +168,7 @@ public class DDoSBoss : BossBase
 
         float startOffset = -(wallBulletCount - 1) * wallSpacing * 0.5f;
 
-        for (int wave = 0; wave < wallBulletCount; wave++)
+        for (int wave = 0; wave < wallWaves; wave++)
         {
             float waveSideOffset = Mathf.Sin(wave * Mathf.PI * 0.5f) * wallSideOffsetPerWave;
 
@@ -160,11 +177,11 @@ public class DDoSBoss : BossBase
                 Vector2 spawnPosition =
                     (Vector2)transform.position +
                     perpendicular * (startOffset + i * wallSpacing);
-                
-                 SpawnProjectile(spawnPosition, direction);
+
+                SpawnProjectile(spawnPosition, direction);
             }
 
-           yield return new WaitForSeconds(wallWaveDelay);
+            yield return new WaitForSeconds(wallWaveDelay);
         }
 
         isAttacking = false;

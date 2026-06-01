@@ -749,9 +749,6 @@ MonoBehaviour:
   - prefab: {fileID: 1302047258711748758, guid: 53ce0dcbf06e2fd4e970afa7d8e33686, type: 3}
     initialSize: 10
     canExpand: 1
-  - prefab: {fileID: 1302047258711748758, guid: fc93fc91557a9b846983fe542eba40e4, type: 3}
-    initialSize: 10
-    canExpand: 1
 --- !u!1 &1347873061
 GameObject:
   m_ObjectHideFlags: 0
@@ -800,7 +797,7 @@ MonoBehaviour:
   wormBossPrefab: {fileID: 5241944115384881793, guid: 500c44bec43ab2748accc82d552c8145, type: 3}
   trojanBossPrefab: {fileID: 4065206293655921270, guid: 794cae60f0c6946438f50d5eadcad0cd, type: 3}
   ddosBossPrefab: {fileID: 634130989906695723, guid: ad2b6ece0ff4b124a84353c32e5f6666, type: 3}
-  hackerBossPrefab: {fileID: 0}
+  hackerBossPrefab: {fileID: 942275698999726998, guid: d5ccf2b8d5d681f49b96d0d461dcd3e1, type: 3}
   testBossLevel: 5
   spawnDistance: 10
 --- !u!1 &1368758578
@@ -988,6 +985,12 @@ MonoBehaviour:
     canExpand: 1
   - prefab: {fileID: 634130989906695723, guid: ad2b6ece0ff4b124a84353c32e5f6666, type: 3}
     initialSize: 5
+    canExpand: 1
+  - prefab: {fileID: 942275698999726998, guid: d5ccf2b8d5d681f49b96d0d461dcd3e1, type: 3}
+    initialSize: 5
+    canExpand: 1
+  - prefab: {fileID: 6833942878974410858, guid: 95a133a295ab7da448ee123712dfa7b6, type: 3}
+    initialSize: 10
     canExpand: 1
 --- !u!1 &1902699426
 GameObject:
