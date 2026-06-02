@@ -1110,8 +1110,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62a634846a97732479bfc97466ff36e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BossSpawner
-  player: {fileID: 0}
-  bossPrefabs: []
+  player: {fileID: 1002402014}
+  bossPrefabs:
+  - {fileID: 4065206293655921270, guid: 794cae60f0c6946438f50d5eadcad0cd, type: 3}
+  - {fileID: 942275698999726998, guid: d5ccf2b8d5d681f49b96d0d461dcd3e1, type: 3}
+  - {fileID: 5241944115384881793, guid: 500c44bec43ab2748accc82d552c8145, type: 3}
+  - {fileID: 634130989906695723, guid: ad2b6ece0ff4b124a84353c32e5f6666, type: 3}
   bossEveryXLevels: 5
   spawnRadius: 12
 --- !u!1 &1456843237
