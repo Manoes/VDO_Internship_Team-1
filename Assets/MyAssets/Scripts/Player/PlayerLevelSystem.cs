@@ -13,9 +13,9 @@ public class PlayerLevelSystem : Singleton<PlayerLevelSystem>
     [SerializeField] private int xpRrequirementFlatIncrease = 5;
 
     [Header("Events")]
-    public UnityEvent<int> OnLevelChanged;
-    public UnityEvent<int, int> OnXPChanged; // CurrentXP, xpToNextLevel
-    public UnityEvent<int> OnLevelUp;
+    public UnityEvent<int> OnLevelChanged;      // Send new Level to UI and other systems that care about current level (e.g. for scaling damage, etc)
+    public UnityEvent<int, int> OnXPChanged;    // CurrentXP, xpToNextLevel, for UI display
+    public UnityEvent<int> OnLevelUp;           // Send new Level to Spawner, used by Spawner to determine which enemies to spawn and how many and also to trigger Upgrade Selection
 
     public int CurrentLevel => currentLevel;
     public int CurrentXP => currentXP;
@@ -27,6 +27,7 @@ public class PlayerLevelSystem : Singleton<PlayerLevelSystem>
         OnXPChanged?.Invoke(currentXP, xpToNextLevel);
     }
 
+    // Give Player XP. If they have enough XP to level up, level up and carry over excess XP. Repeat if multiple levels are gained at once.
     public void AddXP(int amount)
     {
         if(amount <= 0) return;

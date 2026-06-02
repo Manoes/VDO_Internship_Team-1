@@ -259,8 +259,9 @@ MonoBehaviour:
   baseBodyParts: 6
   extraBodyPartEveryXLevels: 5
   bodySpacing: 1.2
-  moveSpeed: 3
+  moveSpeed: 10
   turnSpeed: 8
+  bodyFollowSpeed: 15
   headHitsAfterBodyDestroyed: 3
 --- !u!114 &-4045075342356937664
 MonoBehaviour:
