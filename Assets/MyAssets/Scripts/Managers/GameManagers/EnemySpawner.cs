@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -30,10 +31,13 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private int baseEnemiesPerSpawn = 1;
     [SerializeField] private int enemiesPerSpawnIncreaseEveryXLevels = 3;
 
+    [Header("Spawn VFX")]
+    [SerializeField] private GameObject spawnIndicatorPrefab;
+
     [Header("Events")]
-    public UnityEvent OnUpgradeRequested; // New Level
-    public UnityEvent OnCombatPaused;
-    public UnityEvent OnCombatResumed;
+    public UnityEvent OnUpgradeRequested;   // Open Upgrade UI and request a new upgrade selection and Open UI
+    public UnityEvent OnCombatPaused;       // Lower Music Volume, show "Level Up!" text, etc
+    public UnityEvent OnCombatResumed;      // When Upgrade is Selected and Combat can resume
 
     [Header("Difficulty")]
     [SerializeField] private int currentLevel = 1;
@@ -73,16 +77,39 @@ public class EnemySpawner : MonoBehaviour
         int amount = GetEnemiesPerSpawn();
 
         for (int i = 0; i < amount; i++)
-            SpawnEnemy();
+            StartCoroutine(SpawnEnemyRoutine());
     }
 
-    private void SpawnEnemy()
+    private IEnumerator SpawnEnemyRoutine()
     {
+        if(spawningEnabled == false) yield break;
+
         GameObject prefab = GetRandomEnemyForLevel();
 
-        if (prefab == null) return;
+        if (prefab == null) yield break;
 
         Vector2 spawnPosition = GetSpawnPosition();
+
+        GameObject indicator = null;
+
+        if(spawnIndicatorPrefab != null)
+        {
+            indicator = PoolRouter.Instance != null
+                ? PoolRouter.Instance.GetFromPool(spawnIndicatorPrefab, spawnPosition, Quaternion.identity)
+                : Instantiate(spawnIndicatorPrefab, spawnPosition, Quaternion.identity);
+        }
+
+        yield return new WaitForSeconds(indicator != null ? indicator.GetComponent<EnemySpawnIndicator>().Duration : 0f);
+
+        if(indicator != null)
+        {
+            if (PoolRouter.Instance != null)
+                PoolRouter.Instance.ReturnToPool(indicator);
+            else
+                Destroy(indicator);
+        }
+
+        if(spawningEnabled == false) yield break;
 
         GameObject enemy = PoolRouter.Instance != null
            ? PoolRouter.Instance.GetFromPool(prefab, spawnPosition, Quaternion.identity)
@@ -111,7 +138,9 @@ public class EnemySpawner : MonoBehaviour
         int bonus = (currentLevel - 1) / enemiesPerSpawnIncreaseEveryXLevels;
         return baseEnemiesPerSpawn + bonus;
     }
-
+    
+    // Decide which enemy to spawn based on current level and weights. 
+    // Enemies that are unlocked longer have higher chances to spawn.
     private GameObject GetRandomEnemyForLevel()
     {
         int totalWeight = 0;
@@ -155,6 +184,7 @@ public class EnemySpawner : MonoBehaviour
         currentLevel = Mathf.Max(1, level);
     }
 
+     // Called by PlayerLevelSystem when player levels up.
     public void OnPlayerLevelUp(int newLevel)
     {
         SetLevel(newLevel);
