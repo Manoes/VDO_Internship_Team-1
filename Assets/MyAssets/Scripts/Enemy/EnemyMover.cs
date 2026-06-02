@@ -4,6 +4,7 @@ using UnityEngine;
 public class EnemyMover : MonoBehaviour
 {
     [Header("Movement")]
+    [SerializeField] private bool rotateEnemy = true;
     [SerializeField] private float moveSpeed = 3f;
     [SerializeField] private float stopDistance = 0.2f;
 
@@ -35,9 +36,11 @@ public class EnemyMover : MonoBehaviour
         direction.Normalize();
 
         rb.linearVelocity = direction.normalized * moveSpeed;
-
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-
-        transform.rotation = Quaternion.Euler(0f, 0f, angle - 90f);
+        
+        if(rotateEnemy)
+        {
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0f, 0f, angle - 90f);
+        }
     }
 }
