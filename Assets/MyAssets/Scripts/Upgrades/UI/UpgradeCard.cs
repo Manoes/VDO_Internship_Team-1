@@ -27,6 +27,12 @@ public class UpgradeCard : MonoBehaviour
         }
 
         button.onClick.RemoveAllListeners();
-        button.onClick.AddListener(() => onSelected?.Invoke(currentUpgrade));
+        button.onClick.AddListener(HandleClick);
+    }
+
+    private void HandleClick()
+    {
+        Debug.Log($"[UpgradeCard] Clicked: {currentUpgrade?.UpgradeName}");
+        onSelected?.Invoke(currentUpgrade);
     }
 }

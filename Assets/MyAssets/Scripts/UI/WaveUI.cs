@@ -22,11 +22,6 @@ public class WaveUI : MonoBehaviour
         {
             enemySpawner.OnCombatResumed.AddListener(OnCombatResumed);
         }
-
-        if (PlayerLevelSystem.Instance != null)
-        {
-            PlayerLevelSystem.Instance.OnLevelChanged.AddListener(UpdateWaveDisplay);
-        }
     }
 
     private void OnDisable()
@@ -46,7 +41,13 @@ public class WaveUI : MonoBehaviour
     {
         if (PlayerLevelSystem.Instance != null)
         {
+            // Subscribing here ensures the Singleton Instance is actually ready
+            PlayerLevelSystem.Instance.OnLevelChanged.AddListener(UpdateWaveDisplay);
             UpdateWaveDisplay(PlayerLevelSystem.Instance.CurrentLevel);
+        }
+        else
+        {
+            Debug.LogError("[WaveUI] PlayerLevelSystem instance not found!");
         }
 
         waveInProgress = true;
@@ -56,6 +57,7 @@ public class WaveUI : MonoBehaviour
     private void OnCombatResumed()
     {
         waveInProgress = true;
+        timer = startDelay; // Reset timer so we don't instantly trigger the next wave
     }
 
     private void Update()
@@ -75,27 +77,48 @@ public class WaveUI : MonoBehaviour
         // Look for any objects tagged "Enemy" currently in the scene
         GameObject[] enemiesInScene = GameObject.FindGameObjectsWithTag("Enemy");
 
-        // If no enemies are left and the wave was in progress, trigger the next level
-        if (enemiesInScene.Length == 0)
+        // If no enemies are left and the wave was in progress, trigger the transition
+        if (enemiesInScene.Length == 0 && waveInProgress)
         {
-            Debug.Log("[WaveUI] All enemies defeated! Transitioning wave...");
-            waveInProgress = false;
+            TriggerWaveTransition();
+        }
+    }
 
-            if (PlayerLevelSystem.Instance != null)
-            {
-                // Fill the remaining XP to trigger the level up and upgrade menu
-                int xpNeeded = PlayerLevelSystem.Instance.XPToNextLevel - PlayerLevelSystem.Instance.CurrentXP;
-                PlayerLevelSystem.Instance.AddXP(xpNeeded);
-            }
+    public void TriggerWaveTransition()
+    {
+        if (!waveInProgress) return; // Prevent double-triggering
+
+        Debug.Log("[WaveUI] All enemies defeated! Transitioning wave...");
+        waveInProgress = false;
+
+        if (UpgradeManager.Instance != null)
+        {
+            UpgradeManager.Instance.TriggerUpgradeSelection(StartNextWave);
+        }
+        else
+        {
+            Debug.LogError("[WaveUI] UpgradeManager.Instance is missing! Did you add the script to a GameObject?");
+            StartNextWave();
+        }
+    }
+
+    public void StartNextWave()
+    {
+        if (PlayerLevelSystem.Instance != null)
+        {
+            // Fill the remaining XP to trigger the level up and update the display
+            int xpNeeded = PlayerLevelSystem.Instance.XPToNextLevel - PlayerLevelSystem.Instance.CurrentXP;
+            PlayerLevelSystem.Instance.AddXP(xpNeeded);
         }
     }
 
     public void UpdateWaveDisplay(int level)
     {
         if (waveText != null) waveText.text = wavePrefix + level;
+        Debug.Log($"[WaveUI] Wave display updated to {level}.");
 
-        Debug.Log($"[WaveUI] Wave updated to {level}. Waiting for enemies to be cleared.");
-        
-        waveInProgress = false; // Stop counting until OnCombatResumed is fired
+        // REMOVED: waveInProgress = false; 
+        // We only want to set waveInProgress to false inside TriggerWaveTransition.
+        // If the player levels up via XP gems mid-wave, we must keep checking for enemies!
     }
 }
