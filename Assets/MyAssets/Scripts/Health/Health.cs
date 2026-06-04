@@ -31,10 +31,13 @@ public class Health : MonoBehaviour
 
     private Color[] originalColors;
 
+    void OnEnable()
+    {
+        ResetHealth();
+    }
+
     protected virtual void Awake()
     {
-        currentHealth = maxHealth;
-
         if (spriteRenderers == null || spriteRenderers.Length == 0)
             spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
 
@@ -46,6 +49,25 @@ public class Health : MonoBehaviour
 
     protected virtual void Start()
     {
+        OnHealthChanged?.Invoke(currentHealth, maxHealth);
+    }
+
+    private void ResetHealth()
+    {
+        transform.DOKill();
+        transform.localScale = Vector3.one;
+
+        isDead = false;
+        currentHealth = maxHealth;
+
+        for (int i = 0; i < spriteRenderers.Length; i++)
+        {
+            if (spriteRenderers[i] == null) continue;
+
+            spriteRenderers[i].DOKill();
+            spriteRenderers[i].color = originalColors[i];
+        }
+
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
     }
 
@@ -70,11 +92,11 @@ public class Health : MonoBehaviour
         for (int i = 0; i < spriteRenderers.Length; i++)
         {
             if (spriteRenderers[i] == null) return;
-    
+
             spriteRenderers[i].DOKill();
-    
+
             spriteRenderers[i].color = damageColor;
-    
+
             spriteRenderers[i]
                 .DOColor(originalColors[i], flashDuration)
                 .SetEase(Ease.OutQuad);
@@ -92,7 +114,11 @@ public class Health : MonoBehaviour
             {
                 transform
                     .DOScale(0f, popDuration * 0.5f)
-                    .SetEase(Ease.InBack);
+                    .SetEase(Ease.InBack)
+                    .OnComplete(() =>
+                    {
+                        OnDeath?.Invoke();
+                    });
             });
 
         isDead = true;

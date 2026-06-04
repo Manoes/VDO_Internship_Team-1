@@ -11,16 +11,14 @@ public class UpgradeManager : Singleton<UpgradeManager>
     public UnityEvent OnUpgradeSelected;
     private Action     onSelectionComplete;
 
-    public void TriggerUpgradeSelection(Action onComplete = null)
+    public void TriggerUpgradeSelection()
     {
         if (upgradeUI == null)
         {
             Debug.LogError("[UpgradeManager] UpgradeUI reference is missing in the Inspector!");
-            onComplete?.Invoke();
             return;
         }
 
-        onSelectionComplete = onComplete;
         upgradeUI.Show(PickRandom(3), OnUpgradePicked);
         Time.timeScale = 0f; // pause the game while selecting
     }
@@ -32,9 +30,6 @@ public class UpgradeManager : Singleton<UpgradeManager>
 
         upgradeUI.Hide();
         Time.timeScale = 1f; // resume the game
-
-        onSelectionComplete?.Invoke();
-        onSelectionComplete = null;
 
         OnUpgradeSelected?.Invoke();
     }
