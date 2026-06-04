@@ -9,7 +9,6 @@ public class BossSpawner : MonoBehaviour
     [SerializeField] private GameObject[] bossPrefabs;
 
     [Header("Spawn Settings")]
-    [SerializeField] private int bossEveryXLevels = 5;
     [SerializeField] private float spawnRadius = 12f;
 
     private void Awake()
@@ -22,14 +21,7 @@ public class BossSpawner : MonoBehaviour
         }
     }
 
-    public void OnPlayerLevelUp(int newlevel)
-    {
-        if(newlevel % bossEveryXLevels != 0) return;
-
-        SpawnRandomBoss(newlevel);
-    }
-
-    private void SpawnRandomBoss(int level)
+    public void SpawnRandomBoss(int level)
     {
         if(bossPrefabs == null || bossPrefabs.Length == 0) return;
         if(player == null) return;

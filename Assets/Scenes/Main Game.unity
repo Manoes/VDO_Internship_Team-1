@@ -352,7 +352,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 10.735809}
+  m_AnchoredPosition: {x: 0, y: 10.73584}
   m_SizeDelta: {x: 0, y: 21.4716}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &159242498
@@ -1010,8 +1010,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 50}
-  m_LocalScale: {x: 100, y: 100, z: 100}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 709564813}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1064,12 +1064,12 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -1
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 9053475841999948035, guid: a16403767cb9c66469fc0f4225f78a20, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_DrawMode: 2
+  m_Size: {x: 50, y: 50}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -1086,8 +1086,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3658bb81a1ad4e4c876b6fac247d2b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ParallaxLayer
-  target: {fileID: 1002402014}
-  parallaxFactor: 0.05
+  target: {fileID: 1982664700}
+  parallaxFactor: 0.02
 --- !u!1 &525175560
 GameObject:
   m_ObjectHideFlags: 0
@@ -1527,7 +1527,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 709564811}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
@@ -1874,7 +1874,7 @@ GameObject:
   - component: {fileID: 802618981}
   - component: {fileID: 802618980}
   m_Layer: 0
-  m_Name: Background
+  m_Name: Mid Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1889,8 +1889,8 @@ Transform:
   m_GameObject: {fileID: 802618978}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.1, y: 7.1, z: 25}
-  m_LocalScale: {x: 20, y: 20, z: 20}
+  m_LocalPosition: {x: 0, y: 0, z: 25}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 709564813}
@@ -1944,12 +1944,12 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -1
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.24528301, g: 0.24528301, b: 0.24528301, a: 1}
+  m_Sprite: {fileID: -3276792394584064964, guid: a16403767cb9c66469fc0f4225f78a20, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_DrawMode: 2
+  m_Size: {x: 50, y: 50}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -1966,8 +1966,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3658bb81a1ad4e4c876b6fac247d2b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ParallaxLayer
-  target: {fileID: 1002402014}
-  parallaxFactor: 0.1
+  target: {fileID: 1982664700}
+  parallaxFactor: 0.05
 --- !u!1 &817606661
 GameObject:
   m_ObjectHideFlags: 0
@@ -2633,6 +2633,7 @@ Transform:
   - {fileID: 1347873062}
   - {fileID: 1456843238}
   - {fileID: 297142061}
+  - {fileID: 1958709473}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &940270286
@@ -3399,7 +3400,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 77.68005, y: -26.480011}
+  m_AnchoredPosition: {x: 77.68005, y: -26.480042}
   m_SizeDelta: {x: -155.37146, y: -103.2749}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1124842748
@@ -4311,7 +4312,7 @@ GameObject:
   - component: {fileID: 1320442615}
   - component: {fileID: 1320442614}
   m_Layer: 0
-  m_Name: Mid
+  m_Name: Mid Foreground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4326,7 +4327,7 @@ Transform:
   m_GameObject: {fileID: 1320442612}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.8, y: 4.2, z: 10}
+  m_LocalPosition: {x: 0, y: 0, z: 10}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -4381,12 +4382,12 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -1
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 2476573778976109799, guid: a16403767cb9c66469fc0f4225f78a20, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_DrawMode: 2
+  m_Size: {x: 50, y: 50}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -4403,8 +4404,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3658bb81a1ad4e4c876b6fac247d2b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ParallaxLayer
-  target: {fileID: 1002402014}
-  parallaxFactor: 0.2
+  target: {fileID: 1982664700}
+  parallaxFactor: 0.1
 --- !u!1 &1320888747
 GameObject:
   m_ObjectHideFlags: 0
@@ -4718,7 +4719,6 @@ MonoBehaviour:
   - {fileID: 942275698999726998, guid: d5ccf2b8d5d681f49b96d0d461dcd3e1, type: 3}
   - {fileID: 5241944115384881793, guid: 500c44bec43ab2748accc82d552c8145, type: 3}
   - {fileID: 634130989906695723, guid: ad2b6ece0ff4b124a84353c32e5f6666, type: 3}
-  bossEveryXLevels: 5
   spawnRadius: 12
 --- !u!1 &1409867229
 GameObject:
@@ -5305,18 +5305,6 @@ MonoBehaviour:
   OnUpgradeSelected:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UpgradeUI, Assembly-CSharp
-        m_MethodName: Hide
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1902699428}
         m_TargetAssemblyTypeName: PlayerLevelSystem, Assembly-CSharp
         m_MethodName: ContinueAfterUpgrade
@@ -5633,6 +5621,8 @@ MonoBehaviour:
   minSpawnInterval: 0.25
   baseEnemiesPerSpawn: 1
   enemiesPerSpawnIncreaseEveryXLevels: 3
+  bossSpawner: {fileID: 1958709474}
+  bossEveryXLevels: 5
   spawnIndicatorPrefab: {fileID: 6486368418919276812, guid: f942ae5f229c44b49ac4428d9aadd72d, type: 3}
   OnUpgradeRequested:
     m_PersistentCalls:
@@ -6223,7 +6213,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 5}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 709564813}
@@ -6277,12 +6267,12 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -1
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: -8553293225830045319, guid: a16403767cb9c66469fc0f4225f78a20, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_DrawMode: 2
+  m_Size: {x: 50, y: 50}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -6299,8 +6289,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3658bb81a1ad4e4c876b6fac247d2b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ParallaxLayer
-  target: {fileID: 1002402014}
-  parallaxFactor: 0.35
+  target: {fileID: 1982664700}
+  parallaxFactor: 0.2
 --- !u!1 &1936672711
 GameObject:
   m_ObjectHideFlags: 0
@@ -6379,6 +6369,57 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1936672711}
   m_CullTransparentMesh: 1
+--- !u!1 &1958709472
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1958709473}
+  - component: {fileID: 1958709474}
+  m_Layer: 0
+  m_Name: BossSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1958709473
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1958709472}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 926932330}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1958709474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1958709472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62a634846a97732479bfc97466ff36e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BossSpawner
+  player: {fileID: 1002402014}
+  bossPrefabs:
+  - {fileID: 634130989906695723, guid: ad2b6ece0ff4b124a84353c32e5f6666, type: 3}
+  - {fileID: 942275698999726998, guid: d5ccf2b8d5d681f49b96d0d461dcd3e1, type: 3}
+  - {fileID: 4065206293655921270, guid: 794cae60f0c6946438f50d5eadcad0cd, type: 3}
+  - {fileID: 5241944115384881793, guid: 500c44bec43ab2748accc82d552c8145, type: 3}
+  spawnRadius: 12
 --- !u!1 &1982664698
 GameObject:
   m_ObjectHideFlags: 0

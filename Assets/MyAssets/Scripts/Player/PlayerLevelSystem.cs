@@ -63,12 +63,6 @@ public class PlayerLevelSystem : Singleton<PlayerLevelSystem>
     {
         waitingForUpgrade = false;
 
-        if(currentXP >= xpToNextLevel)
-        {
-            currentXP -= xpToNextLevel;
-            LevelUp();
-        }
-
         OnXPChanged?.Invoke(currentXP, xpToNextLevel);
     }
 }

@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 4664748051060198571}
   - component: {fileID: 9115640400136970220}
   - component: {fileID: 745398648572257067}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: HelperPrefab
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

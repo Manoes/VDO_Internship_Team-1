@@ -1,13 +1,20 @@
 using UnityEngine;
 
-public class EnemyHealth : Health
+public class EnemyHealth : Health, ILevelScalable
 {
+    [SerializeField] private int healthIncreasePerLevel = 1;
+
     private EnemySpawner spawner;
 
     public void Initialize(EnemySpawner spawner)
     {
         this.spawner = spawner;
         transform.localScale = Vector2.one;
+    }
+
+    public void ApplyLevelScaling(int level)
+    {
+        SetMaxHealth(MaxHealth + (level - 1) * healthIncreasePerLevel, true);
     }
 
     protected override void Die()
