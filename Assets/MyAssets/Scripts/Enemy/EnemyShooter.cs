@@ -13,15 +13,19 @@ public class EnemyShooter : MonoBehaviour
 
     [Header("Shooting")]
     [SerializeField] private float fireRate = 2f;
+    [SerializeField] private float fireRateIncreasePerLevel = 0.05f;
+    [SerializeField] private float maxFireRate = 5f;
     [SerializeField] private float projectileSpawnDistance = 0.75f;
 
+    private float baseFireRate;
     private Transform player;
     private float fireTimer;
 
     void Awake()
     {
-        GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
+        baseFireRate = fireRate;
 
+        GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
         if(playerObject != null)
             player = playerObject.transform;
     }
@@ -44,6 +48,11 @@ public class EnemyShooter : MonoBehaviour
             Shoot(direction.normalized);
             fireTimer = 1f / fireRate;
         }
+    }
+
+    public void ApplyLevelScaling(int level)
+    {
+        fireRate = Mathf.Min(baseFireRate + (level - 1) * fireRateIncreasePerLevel, maxFireRate);
     }
 
     private void RotateFirepoint(Vector2 direction)
