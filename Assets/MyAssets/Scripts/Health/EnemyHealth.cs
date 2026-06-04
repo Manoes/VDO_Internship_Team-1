@@ -7,6 +7,7 @@ public class EnemyHealth : Health
     public void Initialize(EnemySpawner spawner)
     {
         this.spawner = spawner;
+        transform.localScale = Vector2.one;
     }
 
     protected override void Die()
