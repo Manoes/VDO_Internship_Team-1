@@ -1,8 +1,9 @@
 using UnityEngine;
 
+[RequireComponent(typeof(SpriteRenderer))]
 public class ParallaxLayer : MonoBehaviour
 {
-    [SerializeField] private Transform target; 
+    [SerializeField] private Transform target;
     [SerializeField] private float parallaxFactor = 0.2f;
 
     private Vector3 startPosition;
@@ -10,17 +11,23 @@ public class ParallaxLayer : MonoBehaviour
 
     private void Start()
     {
-        if (target == null)
-            target = Camera.main.transform; 
+        if (target == null && Camera.main != null)
+            target = Camera.main.transform;
 
         startPosition = transform.position;
         targetStartPosition = target.position;
     }
 
-    void LateUpdate()
+    private void LateUpdate()
     {
+        if (target == null) return;
+
         Vector3 delta = target.position - targetStartPosition;
 
-        transform.position = startPosition + delta * parallaxFactor;
+        transform.position = new Vector3(
+            target.position.x + delta.x * parallaxFactor,
+            target.position.y + delta.y * parallaxFactor,
+            transform.position.z
+        );
     }
 }

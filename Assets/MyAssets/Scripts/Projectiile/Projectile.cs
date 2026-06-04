@@ -46,7 +46,13 @@ public class Projectile : PooledProjectile
 
         if (health == null) return;
 
-        health.TakeDamage(damage);
+        if(other.TryGetComponent<EnemyHealth>(out EnemyHealth enemy))
+        {
+            float multiplier = PlayerStats.Instance != null ? PlayerStats.Instance.DamageMultiplier : 1f;
+            health.TakeDamage(Mathf.Max(1, Mathf.RoundToInt(damage * multiplier)));
+        }
+        else
+           health.TakeDamage(damage);     
 
         Despawn();
     }

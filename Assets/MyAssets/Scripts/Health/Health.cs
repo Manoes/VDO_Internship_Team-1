@@ -71,6 +71,18 @@ public class Health : MonoBehaviour
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
     }
 
+    public void SetMaxHealth(int newMaxHealth, bool refillHealth)
+    {
+        maxHealth = Mathf.Max(1, newMaxHealth);
+
+        if(refillHealth)
+            currentHealth = maxHealth;
+        else
+            currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+        
+        OnHealthChanged?.Invoke(currentHealth, maxHealth);
+    }
+
     public virtual void TakeDamage(int damage)
     {
         if (isDead) return;
