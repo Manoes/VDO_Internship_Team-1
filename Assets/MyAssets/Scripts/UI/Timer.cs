@@ -1,6 +1,5 @@
 using UnityEngine;
 using TMPro;
-using Unity.Mathematics;
 
 public class Timer : MonoBehaviour
 {
@@ -19,8 +18,7 @@ public class Timer : MonoBehaviour
 
     private void UpdateTimerDisplay()
     {
-        int currentScore = Mathf.RoundToInt(score);
-        timerText.text = $"{Mathf.RoundToInt(currentScore * 10f)}";
+        timerText.text = (Mathf.RoundToInt(score) * 10).ToString("D8");
     }
 
     public void AddScore(int anmount)
