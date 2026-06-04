@@ -28,6 +28,10 @@ public class UpgradeManager : Singleton<UpgradeManager>
         if (PlayerStats.Instance != null)
             chosenUpgrade.Apply(PlayerStats.Instance);
 
+        // Update the visual tracker for owned upgrades
+        if (OwnedUpgradesUI.Instance != null)
+            OwnedUpgradesUI.Instance.AddUpgrade(chosenUpgrade.UpgradeName, chosenUpgrade.Icon);
+
         upgradeUI.Hide();
         Time.timeScale = 1f; // resume the game
 

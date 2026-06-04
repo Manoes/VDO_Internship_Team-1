@@ -1,26 +1,32 @@
 using UnityEngine;
 using TMPro;
+using Unity.Mathematics;
 
 public class Timer : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI timerText;
 
-    private float elapsedTime = 0f;
+    private float score = 0f;
     private bool timerRunning = true;
-
+    
     void Update()
     {
         if (!timerRunning) return;
 
-        elapsedTime += Time.deltaTime;
+        score += Time.deltaTime;
         UpdateTimerDisplay();
     }
 
     private void UpdateTimerDisplay()
     {
-        int minutes = Mathf.FloorToInt(elapsedTime / 60F);
-        int seconds = Mathf.FloorToInt(elapsedTime % 60F);
-        timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        int currentScore = Mathf.RoundToInt(score);
+        timerText.text = $"{Mathf.RoundToInt(currentScore * 10f)}";
+    }
+
+    public void AddScore(int anmount)
+    {
+        score += anmount;
+        UpdateTimerDisplay();
     }
 
     public void StopTimer() => timerRunning = false;

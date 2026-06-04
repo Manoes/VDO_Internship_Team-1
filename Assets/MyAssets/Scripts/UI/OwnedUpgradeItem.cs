@@ -32,7 +32,7 @@ public class OwnedUpgradeItem : MonoBehaviour
     {
         if (countText != null)
         {
-            countText.text = "x" + count;
+            countText.text = count.ToString();
             // Optionally hide the text if the count is only 1
             countText.gameObject.SetActive(count > 1);
         }
