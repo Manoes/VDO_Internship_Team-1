@@ -187,6 +187,8 @@ public class EnemySpawner : MonoBehaviour
      // Called by PlayerLevelSystem when player levels up.
     public void OnPlayerLevelUp(int newLevel)
     {
+        print($"LEVEL UP RECEIVED: {newLevel}");
+
         SetLevel(newLevel);
 
         StopSpawning();

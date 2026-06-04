@@ -93,7 +93,7 @@ public class WaveUI : MonoBehaviour
 
         if (UpgradeManager.Instance != null)
         {
-            UpgradeManager.Instance.TriggerUpgradeSelection(StartNextWave);
+            UpgradeManager.Instance.TriggerUpgradeSelection();
         }
         else
         {
