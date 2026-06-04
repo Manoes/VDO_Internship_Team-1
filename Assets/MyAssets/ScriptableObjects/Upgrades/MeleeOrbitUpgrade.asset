@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MeleeOrbitUpgrade
   upgradeName: Melee Orbit
   description: Adds an orbiting melee weapon that strikes nearby enemies.
-  icon: {fileID: 0}
+  icon: {fileID: -5934432585914698484, guid: cb872acc96c03f84c8df643681a058a3, type: 3}
   meleeWeaponPrefab: {fileID: 6459178342071091614, guid: 21d9d5517579ad1488447d97c1cf9167, type: 3}
   orbitRadius: 1.5
   orbitSpeed: 150
