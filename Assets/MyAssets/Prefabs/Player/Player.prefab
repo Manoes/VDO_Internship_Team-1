@@ -490,6 +490,8 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 64
+  targetMode: 2
+  retargetInterval: 1.5
   fireRate: 2
   projectileSpawnRadius: 0.5
 --- !u!114 &4014694039358713350
@@ -506,6 +508,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
   maxHealth: 5
   currentHealth: 0
+  spriteRenderers:
+  - {fileID: 133236764228080885}
+  damageColor: {r: 1, g: 1, b: 1, a: 1}
+  flashDuration: 0.1
   OnDamaged:
     m_PersistentCalls:
       m_Calls: []
@@ -516,6 +522,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   damageCooldown: 0.5
+  cameraShake: {fileID: 0}
+  damageShakeIntensity: 1
+  damageShakeDuration: 0.15
 --- !u!114 &1285478499202935225
 MonoBehaviour:
   m_ObjectHideFlags: 0
