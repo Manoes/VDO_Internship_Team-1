@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LaserUpgrade
   upgradeName: Laser Upgrade
   description: Laser beam that rotates around the player and hits nearby enemies.
-  icon: {fileID: 0}
+  icon: {fileID: 8283701106616186762, guid: cb872acc96c03f84c8df643681a058a3, type: 3}
   laserPrefab: {fileID: 3165641602726548208, guid: f868ddcd139545f45a946921b09428ea, type: 3}
