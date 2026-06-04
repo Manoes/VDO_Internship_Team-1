@@ -106,8 +106,8 @@ GameObject:
   - component: {fileID: 770171374711505268}
   - component: {fileID: 5904966123209721341}
   - component: {fileID: 3678550649821999207}
-  - component: {fileID: 5107494029929192846}
   - component: {fileID: 2823866746878562385}
+  - component: {fileID: 1998517002716688771}
   m_Layer: 6
   m_Name: TrojanBoss
   m_TagString: Enemy
@@ -253,9 +253,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TrojanBoss
   tinyEnemyPrefab: {fileID: 8758026207269206733, guid: 1ba1756888267af4685981794f958eae, type: 3}
-  baseSpawnAmount: 6
-  extraSpawnEveryXLevels: 5
+  spawnInterval: 4
   spawnRadius: 1.5
+  baseSpawnAmount: 1
+  extraSpawnEveryXLevels: 10
+  minSpawnInterval: 2
+  intervalDecreaseEveryXLevels: 0.02
 --- !u!114 &5904966123209721341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -283,29 +286,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DamageDealer
   damage: 5
---- !u!114 &5107494029929192846
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4065206293655921270}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4864d441eb0479b44bf39414013f8100, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TrojanBossHealth
-  maxHealth: 20
-  currentHealth: 0
-  OnDamaged:
-    m_PersistentCalls:
-      m_Calls: []
-  OnDeath:
-    m_PersistentCalls:
-      m_Calls: []
-  OnHealthChanged:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &2823866746878562385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -319,3 +299,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyXPAward
   xpReward: 10
+--- !u!114 &1998517002716688771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4065206293655921270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78aa63fc83a232d419e3dc21341a37e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
+  maxHealth: 20
+  currentHealth: 0
+  OnDamaged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHealthChanged:
+    m_PersistentCalls:
+      m_Calls: []

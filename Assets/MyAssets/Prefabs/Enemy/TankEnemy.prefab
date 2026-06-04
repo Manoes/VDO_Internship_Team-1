@@ -167,6 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 403c7efe0e128254eb01ab1ad40c19d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMover
+  rotateEnemy: 1
   moveSpeed: 1
   stopDistance: 0.2
 --- !u!114 &6422265440651800165
@@ -196,6 +197,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
   maxHealth: 10
   currentHealth: 0
+  spriteRenderers:
+  - {fileID: 5818604760564357357}
+  damageColor: {r: 1, g: 1, b: 1, a: 1}
+  flashDuration: 0.1
   OnDamaged:
     m_PersistentCalls:
       m_Calls: []
@@ -297,7 +302,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_MaskInteraction: 0
   m_Sprite: {fileID: -712631045867808456, guid: b670ab75dde984907b8570040daa08c5, type: 3}
   m_Color: {r: 0.9811321, g: 0.041651815, b: 0.61418885, a: 1}

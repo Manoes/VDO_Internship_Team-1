@@ -4,6 +4,7 @@ public class EnemyShooter : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private Transform firePoint;
+    [SerializeField] private Transform firePointPivot;
     [SerializeField] private GameObject projectilePrefab;
 
     [Header("Targeting")]
@@ -34,7 +35,7 @@ public class EnemyShooter : MonoBehaviour
         if(direction.magnitude > detectionRange)
             return;
         
-        RotateTowards(direction);
+        RotateFirepoint(direction);
 
         fireTimer -= Time.deltaTime;
 
@@ -45,19 +46,22 @@ public class EnemyShooter : MonoBehaviour
         }
     }
 
-    private void RotateTowards(Vector2 direction)
+    private void RotateFirepoint(Vector2 direction)
     {
+        if (firePointPivot == null) return;
+
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
-        transform.rotation = Quaternion.Euler(0f, 0f, angle - 90f);
+        firePointPivot.rotation = Quaternion.Euler(0f, 0f, angle - 90f);
     }
 
     private void Shoot(Vector2 direction)
     {
-        Vector2 spawnPosition =
-            (Vector2)transform.position + 
-            direction * projectileSpawnDistance;
-        
+        Vector2 spawnPosition = firePoint != null
+            ? firePoint.position
+            : (Vector2)transform.position + 
+              direction * projectileSpawnDistance;
+
         Quaternion rotation = 
             Quaternion.Euler(0f, 0f, Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f);
         

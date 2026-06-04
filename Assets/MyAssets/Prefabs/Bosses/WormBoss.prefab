@@ -259,8 +259,9 @@ MonoBehaviour:
   baseBodyParts: 6
   extraBodyPartEveryXLevels: 5
   bodySpacing: 1.2
-  moveSpeed: 3
+  moveSpeed: 10
   turnSpeed: 8
+  bodyFollowSpeed: 15
   headHitsAfterBodyDestroyed: 3
 --- !u!114 &-4045075342356937664
 MonoBehaviour:
@@ -276,6 +277,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WormHeadHealth
   maxHealth: 10
   currentHealth: 0
+  spriteRenderers:
+  - {fileID: 6491198835032987505}
+  damageColor: {r: 1, g: 1, b: 1, a: 1}
+  flashDuration: 0.1
   OnDamaged:
     m_PersistentCalls:
       m_Calls: []

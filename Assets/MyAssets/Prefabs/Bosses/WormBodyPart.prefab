@@ -191,6 +191,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WormBodyPart
   maxHealth: 2
   currentHealth: 0
+  spriteRenderers:
+  - {fileID: 1141895578283876017}
+  damageColor: {r: 1, g: 1, b: 1, a: 1}
+  flashDuration: 0.1
   OnDamaged:
     m_PersistentCalls:
       m_Calls: []

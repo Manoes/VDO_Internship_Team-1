@@ -79,7 +79,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_MaskInteraction: 0
   m_Sprite: {fileID: 3625043607559282579, guid: 19fb86013d8c24d6cb8410c0aadf30fa, type: 3}
   m_Color: {r: 0, g: 1, b: 0.5647059, a: 1}
@@ -105,7 +105,6 @@ GameObject:
   - component: {fileID: 3164067627988910696}
   - component: {fileID: 2815570953537234406}
   - component: {fileID: 4486011845296706915}
-  - component: {fileID: 5867802873946395073}
   m_Layer: 6
   m_Name: SmallTrojanEnemy
   m_TagString: Enemy
@@ -186,7 +185,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -204,7 +203,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 403c7efe0e128254eb01ab1ad40c19d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMover
-  moveSpeed: 10
+  rotateEnemy: 1
+  moveSpeed: 5
   stopDistance: 0.2
 --- !u!114 &2815570953537234406
 MonoBehaviour:
@@ -233,6 +233,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
   maxHealth: 1
   currentHealth: 0
+  spriteRenderers:
+  - {fileID: 8403285991116474155}
+  damageColor: {r: 1, g: 1, b: 1, a: 1}
+  flashDuration: 0.1
   OnDamaged:
     m_PersistentCalls:
       m_Calls: []
@@ -242,16 +246,3 @@ MonoBehaviour:
   OnHealthChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &5867802873946395073
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8758026207269206733}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88b5e1b2862200a45a9f6c35c54bdc65, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyXPAward
-  xpReward: 1
