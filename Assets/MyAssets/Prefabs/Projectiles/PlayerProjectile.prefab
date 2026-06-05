@@ -28,8 +28,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.32000002, y: 0.8, z: 0.8}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 1.5, y: 1.5, z: 0.8}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1797313012480519074}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -82,8 +82,8 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 5
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
-  m_Color: {r: 0.9037957, g: 1, b: 0, a: 1}
+  m_Sprite: {fileID: -4508337955208366566, guid: cdf1a39c4732d1a418c645f748951862, type: 3}
+  m_Color: {r: 0.8207547, g: 0.8207547, b: 0.8207547, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -172,7 +172,7 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 0.54365414, b: 0, a: 1}
+      key0: {r: 0.4156863, g: 0.42352945, b: 0.80392164, a: 1}
       key1: {r: 1, g: 1, b: 1, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
@@ -338,9 +338,16 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0, y: 0.45090133}
-      - {x: -0.15511623, y: -0.24268216}
-      - {x: 0.16661236, y: -0.23118603}
+    - - {x: 0.22151996, y: -0.15610464}
+      - {x: 0.24030879, y: 0.09649402}
+      - {x: -0.022474393, y: 0.17544073}
+      - {x: -0.037869517, y: 0.3028503}
+      - {x: -0.12398975, y: 0.30269912}
+      - {x: -0.12901078, y: 0.045534365}
+      - {x: -0.20975524, y: 0.053687245}
+      - {x: -0.23634529, y: -0.049446717}
+      - {x: -0.08090658, y: -0.32485032}
+      - {x: 0.12194998, y: -0.32571203}
   m_UseDelaunayMesh: 1
 --- !u!114 &1239711992926795968
 MonoBehaviour:

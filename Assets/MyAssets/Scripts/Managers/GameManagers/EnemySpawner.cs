@@ -222,8 +222,11 @@ public class EnemySpawner : MonoBehaviour
 
         if (IsBossLevel())
         {
-            if(bossSpawner != null)
+            if (bossSpawner != null)
+            {
+                bossSpawner.OnBossWarning?.Invoke();
                 bossSpawner.SpawnRandomBoss(currentLevel);
+            }
             else
                 Debug.LogWarning("[EnemySpawner] Boss Level reached, but no BossSpawner assigned.");
         }
