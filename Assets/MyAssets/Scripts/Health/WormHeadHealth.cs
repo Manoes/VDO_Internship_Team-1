@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class WormHeadHealth : Health
 {
     private WormBoss wormBoss;
@@ -5,14 +7,11 @@ public class WormHeadHealth : Health
     protected override void Awake()
     {
         base.Awake();
-
         wormBoss = GetComponent<WormBoss>();
     }
 
-    public override void TakeDamage(int damage)
+    protected override void Die()
     {
-        if(wormBoss == null) return;
-
-        wormBoss.DamageWormHead();
+        wormBoss?.DamageWormHead();
     }
 }

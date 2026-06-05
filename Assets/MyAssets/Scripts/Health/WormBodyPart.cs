@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class WormBodyPart : Health
 {
     private WormBoss wormBoss;
@@ -7,9 +9,8 @@ public class WormBodyPart : Health
         wormBoss = boss;
     }
 
-    public override void TakeDamage(int damage)
+    protected override void Die()
     {
-        if(wormBoss != null)
-            wormBoss.DamageWormBody();
+        wormBoss?.DamageWormBody();
     }
 }
