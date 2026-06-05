@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 461604507804761553}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: VisualRoot
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 6491198835032987505}
   m_Layer: 6
   m_Name: GFX
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -138,8 +138,8 @@ GameObject:
   - component: {fileID: 1179808892325330559}
   - component: {fileID: -4045075342356937664}
   - component: {fileID: 7100494677489950696}
-  - component: {fileID: 6702229690433170858}
   - component: {fileID: 8182924963948523420}
+  - component: {fileID: 3850753276161246288}
   m_Layer: 6
   m_Name: WormBoss
   m_TagString: Enemy
@@ -296,6 +296,7 @@ MonoBehaviour:
   turnSpeed: 8
   bodyFollowSpeed: 15
   headHitsAfterBodyDestroyed: 3
+  xpReward: 25
 --- !u!114 &-4045075342356937664
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -347,19 +348,6 @@ MonoBehaviour:
   endValue: 1
   dissolveDuration: 0.35
   dissolveEase: 5
---- !u!114 &6702229690433170858
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5241944115384881793}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88b5e1b2862200a45a9f6c35c54bdc65, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyXPAward
-  xpReward: 10
 --- !u!114 &8182924963948523420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -375,3 +363,16 @@ MonoBehaviour:
   damage: 2
   damageIncreaseEveryXLevels: 5
   damageIncreaseAmount: 1
+--- !u!114 &3850753276161246288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5241944115384881793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91682400c60fdaf45bcef6a3609bcafe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ScoreAward
+  scoreAmount: 2000

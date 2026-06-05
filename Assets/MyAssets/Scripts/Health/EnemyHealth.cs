@@ -30,6 +30,7 @@ public class EnemyHealth : Health, ILevelScalable
         isDead = true;
 
         GiveXP();
+        GiveScore();
         RemoveFromSpawner();
 
         if (dissolveVFX != null)
@@ -46,6 +47,14 @@ public class EnemyHealth : Health, ILevelScalable
 
         if (xpReward != null && PlayerLevelSystem.Instance != null)
             PlayerLevelSystem.Instance.AddXP(xpReward.XPReward);
+    }
+
+    private void GiveScore()
+    {
+        ScoreAward scoreAward = GetComponent<ScoreAward>();
+
+        if (scoreAward != null && Timer.Instance != null)
+            Timer.Instance.AddScore(scoreAward.ScoreAmount);
     }
 
     private void RemoveFromSpawner()

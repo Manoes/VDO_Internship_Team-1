@@ -16,6 +16,9 @@ public class WormBoss : BossBase
 
     [Header("Head Health")]
     [SerializeField] private int headHitsAfterBodyDestroyed = 3;
+    [SerializeField] private int xpReward = 25;
+
+    private bool dead;
 
     private readonly List<WormBodyPart> bodyParts = new();
 
@@ -27,6 +30,9 @@ public class WormBoss : BossBase
     public override void Initialize(int level)
     {
         base.Initialize(level);
+
+        dead = false;
+        DespawnAllBodyparts();
 
         GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
         if (playerObject != null)
@@ -100,11 +106,11 @@ public class WormBoss : BossBase
 
             Vector2 lookDirection = previousPosition - (Vector2)partTransform.position;
 
-            if(lookDirection.magnitude > 0.001f)
+            if (lookDirection.magnitude > 0.001f)
             {
                 float angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg;
                 partTransform.rotation = Quaternion.Euler(0f, 0f, angle - 90f);
-            }            
+            }
 
             previousPosition = partTransform.position;
         }
@@ -158,12 +164,36 @@ public class WormBoss : BossBase
         print("[WormBoss] Head is now Vulnerable");
     }
 
-    private void Die()
+    public void Die()
     {
+        if (dead) return;
+        dead = true;
+
         print("[WormBoss] Worm Defeated.");
+
+        DespawnAllBodyparts();
+
+        if (PlayerLevelSystem.Instance != null)
+            PlayerLevelSystem.Instance.AddXP(xpReward);
+
         if (PoolRouter.Instance != null)
             PoolRouter.Instance.ReturnToPool(gameObject);
         else
             Destroy(gameObject);
+    }
+
+    private void DespawnAllBodyparts()
+    {
+        for (int i = bodyParts.Count - 1; i >= 0; i--)
+        {
+            if (bodyParts[i] == null) continue;
+
+            if (PoolRouter.Instance != null)
+                PoolRouter.Instance.ReturnToPool(bodyParts[i].gameObject);
+            else
+                Destroy(bodyParts[i].gameObject);
+        }
+
+        bodyParts.Clear();
     }
 }
