@@ -58,7 +58,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 3e5b1304909f13e44a281356f62f9fec, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -221,10 +221,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e83720add96fe604792643fc61a9001e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WormBodyPart
-  maxHealth: 2
+  maxHealth: 1
   currentHealth: 0
   hitVFXPrefab: {fileID: 4596486340926279465, guid: 9bd70990a64b0f34486c00cafb791628, type: 3}
   spriteRenderers:
+  - {fileID: 1141895578283876017}
   - {fileID: 1141895578283876017}
   damageColor: {r: 1, g: 1, b: 1, a: 1}
   flashDuration: 0.1
