@@ -36,7 +36,7 @@ public class PlayerLevelSystem : Singleton<PlayerLevelSystem>
 
         currentXP += amount;
 
-        while(!waitingForUpgrade && currentXP >= xpToNextLevel)
+        if(!waitingForUpgrade && currentXP >= xpToNextLevel)
         {
             currentXP -= xpToNextLevel;
             LevelUp();

@@ -119,52 +119,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &33496852
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 33496853}
-  - component: {fileID: 33496854}
-  m_Layer: 0
-  m_Name: GameLevelConnector
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &33496853
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 33496852}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 926932330}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &33496854
+--- !u!114 &6421731 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 3608947998360753464, guid: 09c1ab4616f2ca94ab4d52990e068725, type: 3}
+  m_PrefabInstance: {fileID: 8343588494109972504}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 33496852}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4be39227f090e9f4ab2118a81ed74f02, type: 3}
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GameLevelConnector
-  levelSystem: {fileID: 1902699428}
-  enemySpawner: {fileID: 1688477267}
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!1 &297142060
 GameObject:
   m_ObjectHideFlags: 0
@@ -211,7 +176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1d8c75f9f7e18249aaec735c9218a31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EXPBar
-  fillImage: {fileID: 0}
+  fillImage: {fileID: 6421731}
 --- !u!114 &297142063
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -244,10 +209,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WaveUI
   waveText: {fileID: 1409867231}
-  enemySpawner: {fileID: 1688477267}
   wavePrefix: 
-  checkInterval: 0.5
-  startDelay: 2
 --- !u!1 &436696598
 GameObject:
   m_ObjectHideFlags: 0
@@ -352,7 +314,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3658bb81a1ad4e4c876b6fac247d2b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ParallaxLayer
-  target: {fileID: 1002402014}
+  target: {fileID: 744210137}
   parallaxFactor: 0.05
 --- !u!1 &709564811
 GameObject:
@@ -657,7 +619,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3658bb81a1ad4e4c876b6fac247d2b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ParallaxLayer
-  target: {fileID: 1002402014}
+  target: {fileID: 744210137}
   parallaxFactor: 0.1
 --- !u!1 &820343854
 GameObject:
@@ -748,9 +710,7 @@ Transform:
   - {fileID: 820343855}
   - {fileID: 1688477266}
   - {fileID: 1902699427}
-  - {fileID: 33496853}
   - {fileID: 1368758579}
-  - {fileID: 1347873062}
   - {fileID: 1456843238}
   - {fileID: 297142061}
   m_Father: {fileID: 0}
@@ -993,10 +953,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ObjectPooler
   pools:
   - prefab: {fileID: 1302047258711748758, guid: fc93fc91557a9b846983fe542eba40e4, type: 3}
-    initialSize: 10
+    initialSize: 20
     canExpand: 1
   - prefab: {fileID: 1302047258711748758, guid: 1d145e29989234c49bca2d98f5a2c595, type: 3}
-    initialSize: 10
+    initialSize: 15
     canExpand: 1
   - prefab: {fileID: 1302047258711748758, guid: 11107baf430dd1946b6500ce71caca3b, type: 3}
     initialSize: 10
@@ -1108,59 +1068,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3658bb81a1ad4e4c876b6fac247d2b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ParallaxLayer
-  target: {fileID: 1002402014}
+  target: {fileID: 744210137}
   parallaxFactor: 0.2
---- !u!1 &1347873061
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1347873062}
-  - component: {fileID: 1347873063}
-  m_Layer: 0
-  m_Name: '[[[DEBUG]]] BossTestSpawner'
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1347873062
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1347873061}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 926932330}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1347873063
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1347873061}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4f086bcfb94279498288bd6416642a1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BossTestSpawner
-  player: {fileID: 1002402014}
-  wormBossPrefab: {fileID: 5241944115384881793, guid: 500c44bec43ab2748accc82d552c8145, type: 3}
-  trojanBossPrefab: {fileID: 4065206293655921270, guid: 794cae60f0c6946438f50d5eadcad0cd, type: 3}
-  ddosBossPrefab: {fileID: 634130989906695723, guid: ad2b6ece0ff4b124a84353c32e5f6666, type: 3}
-  hackerBossPrefab: {fileID: 942275698999726998, guid: d5ccf2b8d5d681f49b96d0d461dcd3e1, type: 3}
-  testBossLevel: 5
-  spawnDistance: 10
 --- !u!1 &1368758578
 GameObject:
   m_ObjectHideFlags: 0
@@ -1355,6 +1264,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: cb749d3266f1a9e4e8da914604fe53d4, type: 2}
   - {fileID: 11400000, guid: e4e6c44b6ac1bc643bc89e36443dcf22, type: 2}
   - {fileID: 11400000, guid: 0cfe94ebfcd2ece45ab5c4c1a46414cc, type: 2}
+  - {fileID: 11400000, guid: b88c2b1362aab574483ba19c0c9be863, type: 2}
   upgradeUI: {fileID: 724114520}
   OnUpgradeSelected:
     m_PersistentCalls:
@@ -1455,7 +1365,7 @@ MonoBehaviour:
   minSpawnInterval: 0.25
   baseEnemiesPerSpawn: 1
   enemiesPerSpawnIncreaseEveryXLevels: 3
-  bossSpawner: {fileID: 0}
+  bossSpawner: {fileID: 1368758580}
   bossEveryXLevels: 5
   spawnIndicatorPrefab: {fileID: 6486368418919276812, guid: f942ae5f229c44b49ac4428d9aadd72d, type: 3}
   OnUpgradeRequested:
@@ -1632,7 +1542,7 @@ MonoBehaviour:
       - m_Target: {fileID: 1688477267}
         m_TargetAssemblyTypeName: EnemySpawner, Assembly-CSharp
         m_MethodName: OnPlayerLevelUp
-        m_Mode: 3
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1640,7 +1550,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 1
+        m_CallState: 2
 --- !u!1 &1908934690
 GameObject:
   m_ObjectHideFlags: 0
@@ -1687,7 +1597,40 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ObjectPooler
   pools:
   - prefab: {fileID: 6486368418919276812, guid: f942ae5f229c44b49ac4428d9aadd72d, type: 3}
-    initialSize: 10
+    initialSize: 20
+    canExpand: 1
+  - prefab: {fileID: 130114594946853755, guid: 64911211c32f9b54594e2661f8d8ce41, type: 3}
+    initialSize: 20
+    canExpand: 1
+  - prefab: {fileID: 2857215285417565978, guid: f47e82a0ed088f74296de629154ab3c5, type: 3}
+    initialSize: 20
+    canExpand: 1
+  - prefab: {fileID: 4596486340926279465, guid: 355404de9eccd2c4381bae5f6d9960f6, type: 3}
+    initialSize: 20
+    canExpand: 1
+  - prefab: {fileID: 2789804490004417285, guid: 752c7762145f3374ab5b1669c8762344, type: 3}
+    initialSize: 20
+    canExpand: 1
+  - prefab: {fileID: 6561346322422801627, guid: 5693379586265ff4681d2327a217d0f0, type: 3}
+    initialSize: 20
+    canExpand: 1
+  - prefab: {fileID: 8259827865624559464, guid: d5e9ef0c38fd8b74aa677e23aa78746c, type: 3}
+    initialSize: 20
+    canExpand: 1
+  - prefab: {fileID: 3412476894990833638, guid: 259ca1b7d642a644bbb9e981239b7569, type: 3}
+    initialSize: 20
+    canExpand: 1
+  - prefab: {fileID: 4596486340926279465, guid: 9709842bc8004df41852f348bf48b331, type: 3}
+    initialSize: 20
+    canExpand: 1
+  - prefab: {fileID: 4596486340926279465, guid: 9bd70990a64b0f34486c00cafb791628, type: 3}
+    initialSize: 20
+    canExpand: 1
+  - prefab: {fileID: 4596486340926279465, guid: e04a7f3abf8c6b94a8b8a9b06bef10f0, type: 3}
+    initialSize: 20
+    canExpand: 1
+  - prefab: {fileID: 2870847799179877078, guid: 364ee423b8ad77f43a68689e487934da, type: 3}
+    initialSize: 20
     canExpand: 1
 --- !u!1 &1909301254
 GameObject:
@@ -1793,8 +1736,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3658bb81a1ad4e4c876b6fac247d2b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ParallaxLayer
-  target: {fileID: 1002402014}
-  parallaxFactor: 0.35
+  target: {fileID: 744210137}
+  parallaxFactor: 0.2
 --- !u!1 &1982664698
 GameObject:
   m_ObjectHideFlags: 0
