@@ -16,6 +16,8 @@ GameObject:
   - component: {fileID: 260038707461305126}
   - component: {fileID: 2342252303775438594}
   - component: {fileID: 8093814484855715054}
+  - component: {fileID: 3635215488631688484}
+  - component: {fileID: 462748741905909855}
   m_Layer: 6
   m_Name: HackerBoss
   m_TagString: Enemy
@@ -203,6 +205,32 @@ MonoBehaviour:
   damage: 3
   damageIncreaseEveryXLevels: 5
   damageIncreaseAmount: 1
+--- !u!114 &3635215488631688484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 942275698999726998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88b5e1b2862200a45a9f6c35c54bdc65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyXPAward
+  xpReward: 25
+--- !u!114 &462748741905909855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 942275698999726998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91682400c60fdaf45bcef6a3609bcafe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ScoreAward
+  scoreAmount: 1500
 --- !u!1 &4861768565743832146
 GameObject:
   m_ObjectHideFlags: 0

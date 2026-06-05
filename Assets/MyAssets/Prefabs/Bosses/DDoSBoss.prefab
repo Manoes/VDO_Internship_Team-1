@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 4600466083916198692}
   - component: {fileID: 1222278009223972261}
   - component: {fileID: 302246225062894651}
+  - component: {fileID: 7509735982937325488}
   m_Layer: 6
   m_Name: DDoSBoss
   m_TagString: Enemy
@@ -217,7 +218,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88b5e1b2862200a45a9f6c35c54bdc65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyXPAward
-  xpReward: 10
+  xpReward: 25
+--- !u!114 &7509735982937325488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 634130989906695723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91682400c60fdaf45bcef6a3609bcafe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ScoreAward
+  scoreAmount: 2500
 --- !u!1 &5835081253800253739
 GameObject:
   m_ObjectHideFlags: 0
