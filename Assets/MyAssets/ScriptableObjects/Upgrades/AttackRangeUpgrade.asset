@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab200390b5352e34d9653a2309a037b1, type: 3}
+  m_Name: AttackRangeUpgrade
+  m_EditorClassIdentifier: Assembly-CSharp::AttackRangeUpgrade
+  upgradeName: Extra Attack range
+  description: +25% Extra Range
+  icon: {fileID: 5909265136080709368, guid: cb872acc96c03f84c8df643681a058a3, type: 3}
+  bonusPercent: 0.25

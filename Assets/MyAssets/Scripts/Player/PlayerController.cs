@@ -26,6 +26,9 @@ public class PlayerController : MonoBehaviour
     [Header("Upgrade Selection")]
     [SerializeField] private UpgradeUI upgradeUI;
 
+    [Header("Death")]
+    [SerializeField] private PlayerHealth playerHealth;
+
     private Rigidbody2D rb;
     private Vector2 moveInput;
     private Vector2 lastMoveDirection = Vector2.right;
@@ -115,6 +118,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnMove(InputValue value)
     {
+        if(playerHealth.IsDead) return;
         moveInput = value.Get<Vector2>();
 
         if (moveInput.sqrMagnitude > 0.01f)
@@ -123,6 +127,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnDash(InputValue value)
     {
+        if(playerHealth.IsDead) return;
         if (!value.isPressed) return;
         if (!canDash || isDashing) return;
 
@@ -131,24 +136,21 @@ public class PlayerController : MonoBehaviour
 
     public void OnPickUpgrade1(InputValue value)
     {
-        Debug.Log("Pressed Upgrade 1");
-
+        if(playerHealth.IsDead) return;
         if (!value.isPressed) return;
         upgradeUI?.PickByIndex(0);
     }
 
     public void OnPickUpgrade2(InputValue value)
     {
-        Debug.Log("Pressed Upgrade 2");
-
+        if(playerHealth.IsDead) return;
         if (!value.isPressed) return;
         upgradeUI?.PickByIndex(1);
     }
 
     public void OnPickUpgrade3(InputValue value)
     {
-        Debug.Log("Pressed Upgrade 3");
-
+        if(playerHealth.IsDead) return;
         if (!value.isPressed) return;
         upgradeUI?.PickByIndex(2);
     }
