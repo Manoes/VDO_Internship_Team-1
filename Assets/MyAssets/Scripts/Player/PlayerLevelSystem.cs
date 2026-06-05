@@ -21,6 +21,8 @@ public class PlayerLevelSystem : Singleton<PlayerLevelSystem>
     public int CurrentXP => currentXP;
     public int XPToNextLevel => xpToNextLevel;
 
+    private bool waitingForUpgrade;
+
     void Start()
     {
         OnLevelChanged?.Invoke(currentLevel);
@@ -34,7 +36,7 @@ public class PlayerLevelSystem : Singleton<PlayerLevelSystem>
 
         currentXP += amount;
 
-        while(currentXP >= xpToNextLevel)
+        if(!waitingForUpgrade && currentXP >= xpToNextLevel)
         {
             currentXP -= xpToNextLevel;
             LevelUp();
@@ -45,6 +47,8 @@ public class PlayerLevelSystem : Singleton<PlayerLevelSystem>
 
     private void LevelUp()
     {
+        waitingForUpgrade = true;
+
         currentLevel++;
 
         xpToNextLevel = Mathf.RoundToInt(xpToNextLevel * xpRrequirementMultiplier + xpRrequirementFlatIncrease);
@@ -53,5 +57,12 @@ public class PlayerLevelSystem : Singleton<PlayerLevelSystem>
 
         OnLevelChanged?.Invoke(currentLevel);
         OnLevelUp?.Invoke(currentLevel);
+    }
+
+    public void ContinueAfterUpgrade()
+    {
+        waitingForUpgrade = false;
+
+        OnXPChanged?.Invoke(currentXP, xpToNextLevel);
     }
 }

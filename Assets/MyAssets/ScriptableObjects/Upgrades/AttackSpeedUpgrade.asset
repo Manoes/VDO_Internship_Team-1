@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AttackSpeedUpgrade
   upgradeName: Attack Speed
   description: +25% Fire Rate
-  icon: {fileID: 0}
+  icon: {fileID: -3782408648181045892, guid: cb872acc96c03f84c8df643681a058a3, type: 3}
   bonusPercent: 0.25

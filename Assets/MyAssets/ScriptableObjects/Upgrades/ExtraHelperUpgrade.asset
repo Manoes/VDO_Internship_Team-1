@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ExtraHelperUpgrade
   upgradeName: Mirror Image
   description: Adds a mirror image of self that shoots
-  icon: {fileID: 0}
+  icon: {fileID: 9153134098540390152, guid: cb872acc96c03f84c8df643681a058a3, type: 3}

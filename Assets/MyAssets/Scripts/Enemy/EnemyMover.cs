@@ -1,24 +1,32 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class EnemyMover : MonoBehaviour
+public class EnemyMover : MonoBehaviour, ILevelScalable
 {
     [Header("Movement")]
     [SerializeField] private bool rotateEnemy = true;
     [SerializeField] private float moveSpeed = 3f;
+    [SerializeField] private float speedIncreasePerLevel = 0.05f;
+    [SerializeField] private float maxMoveSpeed = 7f;
     [SerializeField] private float stopDistance = 0.2f;
 
+    private float baseMoveSpeed;
     private Transform player;
     private Rigidbody2D rb;
 
     void Awake()
     {
+        baseMoveSpeed = moveSpeed;
         rb = GetComponent<Rigidbody2D>();
 
         GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
-
         if(playerObject != null)
             player = playerObject.transform;
+    }
+
+    public void ApplyLevelScaling(int level)
+    {
+        moveSpeed = Mathf.Min(baseMoveSpeed + (level -1) * speedIncreasePerLevel, maxMoveSpeed);
     }
 
     void FixedUpdate()

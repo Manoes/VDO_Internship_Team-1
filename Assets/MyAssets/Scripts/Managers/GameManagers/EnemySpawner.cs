@@ -31,6 +31,10 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private int baseEnemiesPerSpawn = 1;
     [SerializeField] private int enemiesPerSpawnIncreaseEveryXLevels = 3;
 
+    [Header("Bosses")]
+    [SerializeField] private BossSpawner bossSpawner;
+    [SerializeField] private int bossEveryXLevels = 5;
+
     [Header("Spawn VFX")]
     [SerializeField] private GameObject spawnIndicatorPrefab;
 
@@ -119,6 +123,9 @@ public class EnemySpawner : MonoBehaviour
 
         if(enemy.TryGetComponent<EnemyHealth>(out EnemyHealth enemyHealth))
             enemyHealth.Initialize(this);
+        
+        foreach(ILevelScalable scalable in enemy.GetComponents<ILevelScalable>())
+            scalable.ApplyLevelScaling(currentLevel);
     }
 
     private Vector2 GetSpawnPosition()
@@ -179,6 +186,11 @@ public class EnemySpawner : MonoBehaviour
         return enemy.baseWeight + (levelsAfterUnlock * enemy.weightIncreasePerLevel);
     }
 
+    private bool IsBossLevel()
+    {
+        return currentLevel > 0 && currentLevel % bossEveryXLevels == 0;
+    }
+
     public void SetLevel(int level)
     {
         currentLevel = Mathf.Max(1, level);
@@ -187,6 +199,8 @@ public class EnemySpawner : MonoBehaviour
      // Called by PlayerLevelSystem when player levels up.
     public void OnPlayerLevelUp(int newLevel)
     {
+        print($"LEVEL UP RECEIVED: {newLevel}");
+
         SetLevel(newLevel);
 
         StopSpawning();
@@ -205,6 +219,14 @@ public class EnemySpawner : MonoBehaviour
     {
         spawningEnabled = true;
         spawnTimer = GetSpawnInterval();
+
+        if (IsBossLevel())
+        {
+            if(bossSpawner != null)
+                bossSpawner.SpawnRandomBoss(currentLevel);
+            else
+                Debug.LogWarning("[EnemySpawner] Boss Level reached, but no BossSpawner assigned.");
+        }
 
         OnCombatResumed?.Invoke();
     }

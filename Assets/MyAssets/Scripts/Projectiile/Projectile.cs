@@ -31,22 +31,36 @@ public class Projectile : PooledProjectile
     {
         StartLifetime();
 
-        rb.linearVelocity = direction.normalized * speed;        
+        rb.linearVelocity = direction.normalized * speed;
 
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0f, 0f, angle-90f);
+        transform.rotation = Quaternion.Euler(0f, 0f, angle - 90f);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if((damageLayers.value & (1 << other.gameObject.layer)) == 0) 
+        if ((damageLayers.value & (1 << other.gameObject.layer)) == 0)
             return;
 
-        Health health = other.GetComponent<Health>();
+        Health health = other.GetComponentInParent<Health>();
 
-        if (health == null) return;
+        if (health == null)
+            return;
 
-        health.TakeDamage(damage);
+        int finalDamage = damage;
+
+        if (health is EnemyHealth)
+        {
+            float multiplier = PlayerStats.Instance != null
+                ? PlayerStats.Instance.DamageMultiplier
+                : 1f;
+
+            finalDamage = Mathf.Max(1, Mathf.RoundToInt(damage * multiplier));
+        }
+
+        Vector2 hitPoint = other.ClosestPoint(transform.position);
+
+        health.TakeDamage(finalDamage, hitPoint);
 
         Despawn();
     }
