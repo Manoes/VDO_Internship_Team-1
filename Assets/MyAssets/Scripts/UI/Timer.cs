@@ -7,6 +7,8 @@ public class Timer : Singleton<Timer>
 
     private float score = 0f;
     private bool timerRunning = true;
+
+    public int CurrentScore => Mathf.RoundToInt(score);
     
     void Update()
     {
