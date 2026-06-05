@@ -28,8 +28,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 4788235435657717036}
+  m_Children: []
   m_Father: {fileID: 282697594599871264}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1302047258711748758
@@ -70,6 +69,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8702719110440962957}
+  - {fileID: 1118568971421613329}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &8403314826532945930
@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 403c7efe0e128254eb01ab1ad40c19d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMover
-  rotateEnemy: 1
+  rotateEnemy: 0
   moveSpeed: 3
   speedIncreasePerLevel: 0.05
   maxMoveSpeed: 7
