@@ -12,23 +12,26 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] private float helperOrbitSpeed = 60f;
 
     // All multipliers start at 1.0 (100%)
-    public float MoveSpeedMultiplier   { get; private set; } = 1f;
+    public float MoveSpeedMultiplier { get; private set; } = 1f;
     public float AttackSpeedMultiplier { get; private set; } = 1f;
-    public float DamageMultiplier      { get; private set; } = 1f;
-    public float RegenPerSecond        { get; private set; } = 0f;
+    public float DamageMultiplier { get; private set; } = 1f;
+    public float RangeMultiplier { get; private set; } = 1f;
+    public float RegenPerSecond { get; private set; } = 0f;
 
-    private int   bonusMaxHealth;
+    private int bonusMaxHealth;
     private float regenAccumulator;
 
     // Cached component refs
-    private PlayerController        playerController;
+    private PlayerController playerController;
     private PlayerRandomAutoShooter playerShooter;
-    private Health                  playerHealth;
+    private PlayerAttackRange playerAttackRange;
+    private Health playerHealth;
 
     // Cached base values - read once from inspector values via reflection
     private float baseMoveSpeed;
     private float baseFireRate;
-    private int   baseMaxHealth;
+    private float baseAttackRadius;
+    private int baseMaxHealth;
 
     private readonly List<GameObject> activeHelpers = new();
 
@@ -39,10 +42,12 @@ public class PlayerStats : MonoBehaviour
 
         playerController = GetComponent<PlayerController>();
         playerShooter = GetComponent<PlayerRandomAutoShooter>();
+        playerAttackRange = GetComponent<PlayerAttackRange>();
         playerHealth = GetComponent<Health>();
 
         // Read the starting values set in the inspector
         baseMoveSpeed = ReflectionHelper.GetField<float>(playerController, "moveSpeed");
+        baseAttackRadius = ReflectionHelper.GetField<float>(playerAttackRange, "attackRadius");
         baseFireRate = ReflectionHelper.GetField<float>(playerShooter, "fireRate");
         baseMaxHealth = ReflectionHelper.GetField<int>(playerHealth, "maxHealth");
     }
@@ -57,7 +62,7 @@ public class PlayerStats : MonoBehaviour
     {
         MoveSpeedMultiplier += bonus;
         // moveSpeed is read every FixedUpdate, so this takes effect next frame.
-        ReflectionHelper.SetField(playerController, "moveSpeed", baseMaxHealth * MoveSpeedMultiplier);
+        ReflectionHelper.SetField(playerController, "moveSpeed", baseMoveSpeed * MoveSpeedMultiplier);
     }
 
     public void AddAttackSpeed(float bonus)
@@ -81,6 +86,13 @@ public class PlayerStats : MonoBehaviour
         int newMax = baseMaxHealth + bonusMaxHealth;
         ReflectionHelper.SetField(playerHealth, "maxHealth", newMax);
         playerHealth.Heal(amount);
+    }
+
+    public void AddRange(float bonus)
+    {
+        RangeMultiplier += bonus;
+
+        playerAttackRange.SetRange(baseAttackRadius * RangeMultiplier);
     }
 
     public void AddRegen(float regenPerSec) => RegenPerSecond += regenPerSec;

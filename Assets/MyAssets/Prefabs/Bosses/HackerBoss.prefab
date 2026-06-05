@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 413053787841582148}
   - component: {fileID: 4056916199820897529}
   - component: {fileID: 6020901310237390998}
+  - component: {fileID: 260038707461305126}
   - component: {fileID: 2342252303775438594}
   - component: {fileID: 8093814484855715054}
   m_Layer: 6
@@ -35,7 +36,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1169731336255042929}
+  - {fileID: 4971909122013849602}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &3875491653595919916
@@ -132,6 +133,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
   maxHealth: 10
   currentHealth: 0
+  hitVFXPrefab: {fileID: 130114594946853755, guid: 64911211c32f9b54594e2661f8d8ce41, type: 3}
+  spriteRenderers:
+  - {fileID: 592097610272850015}
+  damageColor: {r: 1, g: 1, b: 1, a: 1}
+  flashDuration: 0.1
+  damageNumberPrefab: {fileID: 2870847799179877078, guid: 364ee423b8ad77f43a68689e487934da, type: 3}
+  visualRoot: {fileID: 4971909122013849602}
+  popScale: 1.3
+  popDuration: 0.15
   OnDamaged:
     m_PersistentCalls:
       m_Calls: []
@@ -141,6 +151,26 @@ MonoBehaviour:
   OnHealthChanged:
     m_PersistentCalls:
       m_Calls: []
+  healthIncreasePerLevel: 1
+--- !u!114 &260038707461305126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 942275698999726998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37a30567a8d484f4f916f83bd6b4fb51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyDissolveDeathVFX
+  spriteRenderers:
+  - {fileID: 592097610272850015}
+  dissolveProperty: _DissolveSlider
+  startValue: 0
+  endValue: 1
+  dissolveDuration: 0.35
+  dissolveEase: 5
 --- !u!114 &2342252303775438594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,7 +183,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 403c7efe0e128254eb01ab1ad40c19d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMover
+  rotateEnemy: 1
   moveSpeed: 3
+  speedIncreasePerLevel: 0.05
+  maxMoveSpeed: 7
   stopDistance: 0.2
 --- !u!114 &8093814484855715054
 MonoBehaviour:
@@ -168,6 +201,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DamageDealer
   damage: 3
+  damageIncreaseEveryXLevels: 5
+  damageIncreaseAmount: 1
+--- !u!1 &4861768565743832146
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4971909122013849602}
+  m_Layer: 0
+  m_Name: VisualRoot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4971909122013849602
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4861768565743832146}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1169731336255042929}
+  m_Father: {fileID: 2842226851074353376}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6559468084879477766
 GameObject:
   m_ObjectHideFlags: 0
@@ -193,12 +260,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6559468084879477766}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 4, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 2842226851074353376}
+  m_Father: {fileID: 4971909122013849602}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &592097610272850015
 SpriteRenderer:
@@ -226,7 +293,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 3e5b1304909f13e44a281356f62f9fec, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

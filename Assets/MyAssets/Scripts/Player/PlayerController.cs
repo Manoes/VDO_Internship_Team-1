@@ -23,6 +23,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Collider2D playerCollider;
     [SerializeField] private LayerMask dashThroughLayers;
 
+    [Header("Upgrade Selection")]
+    [SerializeField] private UpgradeUI upgradeUI;
+
+    [Header("Death")]
+    [SerializeField] private PlayerHealth playerHealth;
 
     private Rigidbody2D rb;
     private Vector2 moveInput;
@@ -39,13 +44,16 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
 
-        if(playerCollider == null)
+        if (playerCollider == null)
             playerCollider = GetComponent<Collider2D>();
+
+        if (upgradeUI == null)
+            upgradeUI = FindFirstObjectByType<UpgradeUI>();
     }
 
     void FixedUpdate()
     {
-        if(isDashing) return;
+        if (isDashing) return;
 
         rb.linearVelocity = moveInput * moveSpeed;
     }
@@ -57,9 +65,9 @@ public class PlayerController : MonoBehaviour
         canDash = false;
         isDashing = true;
 
-        if(InvulnerableDuringDash)
+        if (InvulnerableDuringDash)
             isInvulnerable = true;
-        
+
         IgnoreDashThroughCollisions(true);
 
         rb.linearVelocity = lastMoveDirection * dashSpeed;
@@ -80,7 +88,7 @@ public class PlayerController : MonoBehaviour
 
         if (InvulnerableDuringDash)
             isInvulnerable = false;
-        
+
         IgnoreDashThroughCollisions(false);
 
         rb.linearVelocity = moveInput * moveSpeed;
@@ -92,13 +100,13 @@ public class PlayerController : MonoBehaviour
 
     private void IgnoreDashThroughCollisions(bool ignore)
     {
-        if(playerCollider== null) return;
+        if (playerCollider == null) return;
 
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 100f, dashThroughLayers);
 
-        foreach(Collider2D col in colliders)
+        foreach (Collider2D col in colliders)
         {
-            if(col == null) continue;
+            if (col == null) continue;
             Physics2D.IgnoreCollision(playerCollider, col, ignore);
         }
 
@@ -110,18 +118,41 @@ public class PlayerController : MonoBehaviour
 
     public void OnMove(InputValue value)
     {
+        if(playerHealth.IsDead) return;
         moveInput = value.Get<Vector2>();
 
-        if(moveInput.sqrMagnitude > 0.01f)
+        if (moveInput.sqrMagnitude > 0.01f)
             lastMoveDirection = moveInput.normalized;
     }
 
     public void OnDash(InputValue value)
     {
-        if(!value.isPressed) return;
-        if(!canDash || isDashing) return;
+        if(playerHealth.IsDead) return;
+        if (!value.isPressed) return;
+        if (!canDash || isDashing) return;
 
         StartCoroutine(DashRoutine());
+    }
+
+    public void OnPickUpgrade1(InputValue value)
+    {
+        if(playerHealth.IsDead) return;
+        if (!value.isPressed) return;
+        upgradeUI?.PickByIndex(0);
+    }
+
+    public void OnPickUpgrade2(InputValue value)
+    {
+        if(playerHealth.IsDead) return;
+        if (!value.isPressed) return;
+        upgradeUI?.PickByIndex(1);
+    }
+
+    public void OnPickUpgrade3(InputValue value)
+    {
+        if(playerHealth.IsDead) return;
+        if (!value.isPressed) return;
+        upgradeUI?.PickByIndex(2);
     }
 
     #endregion

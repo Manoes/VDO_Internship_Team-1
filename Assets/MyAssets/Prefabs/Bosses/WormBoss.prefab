@@ -1,5 +1,37 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2804421109527007881
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 461604507804761553}
+  m_Layer: 0
+  m_Name: VisualRoot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &461604507804761553
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2804421109527007881}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2353321027522480805}
+  m_Father: {fileID: 8296800658687933875}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2954266801476560662
 GameObject:
   m_ObjectHideFlags: 0
@@ -25,12 +57,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2954266801476560662}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8296800658687933875}
+  m_Father: {fileID: 461604507804761553}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6491198835032987505
 SpriteRenderer:
@@ -58,7 +90,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 3e5b1304909f13e44a281356f62f9fec, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -105,6 +137,7 @@ GameObject:
   - component: {fileID: 4721623462729899736}
   - component: {fileID: 1179808892325330559}
   - component: {fileID: -4045075342356937664}
+  - component: {fileID: 7100494677489950696}
   - component: {fileID: 6702229690433170858}
   - component: {fileID: 8182924963948523420}
   m_Layer: 6
@@ -127,7 +160,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2353321027522480805}
+  - {fileID: 461604507804761553}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &5170646581295303466
@@ -277,6 +310,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WormHeadHealth
   maxHealth: 10
   currentHealth: 0
+  hitVFXPrefab: {fileID: 4596486340926279465, guid: 9bd70990a64b0f34486c00cafb791628, type: 3}
+  spriteRenderers:
+  - {fileID: 6491198835032987505}
+  damageColor: {r: 1, g: 1, b: 1, a: 1}
+  flashDuration: 0.1
+  damageNumberPrefab: {fileID: 2870847799179877078, guid: 364ee423b8ad77f43a68689e487934da, type: 3}
+  visualRoot: {fileID: 461604507804761553}
+  popScale: 1.3
+  popDuration: 0.15
   OnDamaged:
     m_PersistentCalls:
       m_Calls: []
@@ -286,6 +328,25 @@ MonoBehaviour:
   OnHealthChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &7100494677489950696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5241944115384881793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37a30567a8d484f4f916f83bd6b4fb51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyDissolveDeathVFX
+  spriteRenderers:
+  - {fileID: 6491198835032987505}
+  dissolveProperty: _DissolveSlider
+  startValue: 0
+  endValue: 1
+  dissolveDuration: 0.35
+  dissolveEase: 5
 --- !u!114 &6702229690433170858
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -312,3 +373,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DamageDealer
   damage: 2
+  damageIncreaseEveryXLevels: 5
+  damageIncreaseAmount: 1

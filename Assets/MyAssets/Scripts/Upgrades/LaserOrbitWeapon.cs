@@ -33,7 +33,7 @@ public class LaserOrbitWeapon : MonoBehaviour
 
         lastHitTime[other] = Time.time;
 
-        Health health = other.GetComponent<Health>();
+        EnemyHealth health = other.GetComponentInParent<EnemyHealth>();
         if (health == null) return;
 
         float multiplier = PlayerStats.Instance != null ? PlayerStats.Instance.DamageMultiplier : 1f;

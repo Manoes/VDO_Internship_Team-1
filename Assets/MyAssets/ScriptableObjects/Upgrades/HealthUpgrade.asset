@@ -16,6 +16,6 @@ MonoBehaviour:
   description: '+20% Health
 
     +5% Health Regen per second'
-  icon: {fileID: 0}
+  icon: {fileID: 1646269782439008937, guid: cb872acc96c03f84c8df643681a058a3, type: 3}
   bonusMaxHealth: 2
   regenPerSecond: 0.5

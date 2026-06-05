@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DamageUpgrade
   upgradeName: Damage Upgrade
   description: +25% Damage
-  icon: {fileID: 0}
+  icon: {fileID: -6655559691796092040, guid: cb872acc96c03f84c8df643681a058a3, type: 3}
   bonusPercent: 0.25

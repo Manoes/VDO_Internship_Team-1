@@ -3,17 +3,17 @@ using UnityEngine;
 
 public class PlayerAttackRange : MonoBehaviour
 {
-   [Header("Range")]
-   [SerializeField] private float attackRadius = 5f;
-   [SerializeField] private Transform rangeVisual;
+    [Header("Range")]
+    [SerializeField] private float attackRadius = 5f;
+    [SerializeField] private Transform rangeVisual;
 
-   [Header("Tweens")]
-   [SerializeField] private float rangeTweenDuration = 0.25f;
-   [SerializeField] private Ease rangeTweenEase = Ease.OutBack;
+    [Header("Tweens")]
+    [SerializeField] private float rangeTweenDuration = 0.25f;
+    [SerializeField] private Ease rangeTweenEase = Ease.OutBack;
 
-   public float AttackRadius => attackRadius;
+    public float AttackRadius => attackRadius;
 
-   private Tween rangeTween;
+    private Tween rangeTween;
 
     void Start()
     {
@@ -33,7 +33,7 @@ public class PlayerAttackRange : MonoBehaviour
 
     private void TweenRangeVisual()
     {
-        if(rangeVisual == null) return;
+        if (rangeVisual == null) return;
 
         rangeTween?.Kill();
 

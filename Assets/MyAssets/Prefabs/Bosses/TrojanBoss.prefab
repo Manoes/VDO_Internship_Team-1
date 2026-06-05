@@ -1,5 +1,37 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &537567744812453475
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2617498684471820084}
+  m_Layer: 0
+  m_Name: VisualRoot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2617498684471820084
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 537567744812453475}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 267378933357305094}
+  m_Father: {fileID: 8535610889929544095}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &695288696173195829
 GameObject:
   m_ObjectHideFlags: 0
@@ -25,12 +57,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 695288696173195829}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8535610889929544095}
+  m_Father: {fileID: 2617498684471820084}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2304309981899946664
 SpriteRenderer:
@@ -58,7 +90,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 3e5b1304909f13e44a281356f62f9fec, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -106,8 +138,9 @@ GameObject:
   - component: {fileID: 770171374711505268}
   - component: {fileID: 5904966123209721341}
   - component: {fileID: 3678550649821999207}
-  - component: {fileID: 2823866746878562385}
   - component: {fileID: 1998517002716688771}
+  - component: {fileID: 3629570340564439190}
+  - component: {fileID: 2823866746878562385}
   m_Layer: 6
   m_Name: TrojanBoss
   m_TagString: Enemy
@@ -128,7 +161,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 267378933357305094}
+  - {fileID: 2617498684471820084}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1706445650828139350
@@ -271,7 +304,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 403c7efe0e128254eb01ab1ad40c19d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMover
+  rotateEnemy: 1
   moveSpeed: 1
+  speedIncreasePerLevel: 0.05
+  maxMoveSpeed: 7
   stopDistance: 0.2
 --- !u!114 &3678550649821999207
 MonoBehaviour:
@@ -286,19 +322,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DamageDealer
   damage: 5
---- !u!114 &2823866746878562385
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4065206293655921270}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88b5e1b2862200a45a9f6c35c54bdc65, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyXPAward
-  xpReward: 10
+  damageIncreaseEveryXLevels: 5
+  damageIncreaseAmount: 1
 --- !u!114 &1998517002716688771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -313,6 +338,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
   maxHealth: 20
   currentHealth: 0
+  hitVFXPrefab: {fileID: 3412476894990833638, guid: 259ca1b7d642a644bbb9e981239b7569, type: 3}
+  spriteRenderers: []
+  damageColor: {r: 1, g: 1, b: 1, a: 1}
+  flashDuration: 0.1
+  damageNumberPrefab: {fileID: 2870847799179877078, guid: 364ee423b8ad77f43a68689e487934da, type: 3}
+  visualRoot: {fileID: 2617498684471820084}
+  popScale: 1.3
+  popDuration: 0.15
   OnDamaged:
     m_PersistentCalls:
       m_Calls: []
@@ -322,3 +355,36 @@ MonoBehaviour:
   OnHealthChanged:
     m_PersistentCalls:
       m_Calls: []
+  healthIncreasePerLevel: 1
+--- !u!114 &3629570340564439190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4065206293655921270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37a30567a8d484f4f916f83bd6b4fb51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyDissolveDeathVFX
+  spriteRenderers:
+  - {fileID: 2304309981899946664}
+  dissolveProperty: _DissolveSlider
+  startValue: 0
+  endValue: 1
+  dissolveDuration: 0.35
+  dissolveEase: 5
+--- !u!114 &2823866746878562385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4065206293655921270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88b5e1b2862200a45a9f6c35c54bdc65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyXPAward
+  xpReward: 10

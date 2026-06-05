@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BombOrbitUpgrade
   upgradeName: Bomb Orbit
   description: Orbiting bomb that explodes when hitting nearby enemies
-  icon: {fileID: 0}
+  icon: {fileID: 2835338009475454071, guid: cb872acc96c03f84c8df643681a058a3, type: 3}
   bombPrefab: {fileID: 7490920358227927717, guid: 5aedf03e5eb41034cada8238eb1d0fed, type: 3}
   bombCount: 3
   orbitRadius: 2.5
