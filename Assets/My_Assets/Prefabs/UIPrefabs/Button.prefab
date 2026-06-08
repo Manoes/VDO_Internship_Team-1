@@ -315,7 +315,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3606902c39df2b84084653f4bc90e347, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  asS: {fileID: 0}
+  asS: {fileID: 1988791133046309747}
   selectSound:
   - {fileID: 8300000, guid: e4978e513f3d1924e9f30bca361d5c51, type: 3}
 --- !u!1 &7018757448727764029

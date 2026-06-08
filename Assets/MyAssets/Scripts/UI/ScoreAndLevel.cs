@@ -7,7 +7,6 @@ public class ScoreAndLevel : MonoBehaviour
     [SerializeField] private TextMeshProUGUI finalLevelText;
     private int score;
     private int level;
-    private string name;
 
     /// <summary>
     /// Automatically updates the stats whenever this panel is activated.
@@ -43,7 +42,7 @@ public class ScoreAndLevel : MonoBehaviour
     private void UpdateDeathU(int score, int level)
     {
         if(finalLevelText != null)
-            finalLevelText.text = "Level: " + level.ToString();
+            finalLevelText.text = "Max Level: " + level.ToString();
 
         if(finalScoreText != null)
             finalScoreText.text = "Score: " + (score).ToString("D8");
