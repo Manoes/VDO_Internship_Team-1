@@ -79,12 +79,22 @@ public class HighScoreService
 
     public void AddHighScore(string name, int score, int maxLevelCompleted)
     {
+        name = SanitizeName(name);
+
+        bool alreadyExists = Data.entries.Any(e =>
+            e.name == name &&
+            e.score == score &&
+            e.maxLevelCompleted == maxLevelCompleted
+        );
+
+        if(alreadyExists) return;
+
         if(!IsHighScore(score, maxLevelCompleted))
             return;        
 
         Data.entries.Add(new HighScoreEntry
         {
-            name = SanitizeName(name),
+            name = name,
             score = score,
             maxLevelCompleted = maxLevelCompleted
         });
