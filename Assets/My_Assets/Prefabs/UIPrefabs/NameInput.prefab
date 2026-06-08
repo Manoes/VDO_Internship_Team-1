@@ -200,8 +200,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Del
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 6c5acb320fde5654b9d15a00dac1d2b1, type: 2}
-  m_sharedMaterial: {fileID: -2934256030447000370, guid: 6c5acb320fde5654b9d15a00dac1d2b1, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5909b2e68d10c6e45afce106b1ee1a34, type: 2}
+  m_sharedMaterial: {fileID: -2934256030447000370, guid: 5909b2e68d10c6e45afce106b1ee1a34, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -705,8 +705,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: _
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 6c5acb320fde5654b9d15a00dac1d2b1, type: 2}
-  m_sharedMaterial: {fileID: -2934256030447000370, guid: 6c5acb320fde5654b9d15a00dac1d2b1, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5909b2e68d10c6e45afce106b1ee1a34, type: 2}
+  m_sharedMaterial: {fileID: -2934256030447000370, guid: 5909b2e68d10c6e45afce106b1ee1a34, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -736,7 +736,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 0
   m_fontSizeMax: 0
-  m_fontStyle: 1
+  m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -902,7 +902,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8f21f1a2214ec14a88df2f734286196, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  letters: 6100620063006400650066006700680069006a006b006c006d006e006f0070007100720073007400750076007700780079007a004100420043004400450046004700480049004a004b004c004d004e004f0050005100520053005400550056005a00580059005a0030003100320033003400350036003700380039002e0021002f005f002d005e0024002a00
+  letters: 6100620063006400650066006700680069006a006b006c006d006e006f0070007100720073007400750076007700780079007a004100420043004400450046004700480049004a004b004c004d004e004f0050005100520053005400550056005700580059005a003000310032003300340035003600370038003900
   buttonPrefab: {fileID: 4202909060599117976, guid: 1af2e601d2da4f34e8cad93da4a2eb1c, type: 3}
   audioSource: {fileID: 2335366385681988799}
   soundEffect: {fileID: 8300000, guid: 6f541bc9248297447924051108f3d472, type: 3}
