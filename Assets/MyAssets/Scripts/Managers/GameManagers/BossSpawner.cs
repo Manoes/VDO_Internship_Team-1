@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class BossSpawner : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class BossSpawner : MonoBehaviour
 
     [Header("Spawn Settings")]
     [SerializeField] private float spawnRadius = 12f;
+
+    public UnityEvent OnBossWarning;        // Triggered when a boss is about to spawn
+
 
     private void Awake()
     {
