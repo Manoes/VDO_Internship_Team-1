@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 using System.Collections;
 
 public class BombOrbitWeapon : MonoBehaviour
@@ -8,8 +9,9 @@ public class BombOrbitWeapon : MonoBehaviour
     [SerializeField] private float     respawnDelay      = 3f;
     [SerializeField] private LayerMask enemyLayer;
 
-    // Optional explosion VFX prefab to spawn on detonation
     [SerializeField] private GameObject explosionVFXPrefab;
+
+    public UnityEvent OnExplode;
 
     private SpriteRenderer spriteRenderer;
     private Collider2D     col;
@@ -47,6 +49,7 @@ public class BombOrbitWeapon : MonoBehaviour
         if (explosionVFXPrefab != null)
             Instantiate(explosionVFXPrefab, transform.position, Quaternion.identity);
 
+        OnExplode?.Invoke();
         StartCoroutine(Respawn());
     }
 

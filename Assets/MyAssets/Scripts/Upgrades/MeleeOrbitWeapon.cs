@@ -1,11 +1,14 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class MeleeOrbitWeapon : MonoBehaviour
 {
     [SerializeField] private int       baseDamage     = 1;
     [SerializeField] private float     damageCooldown = 0.5f; //seconds before hitting same enemy again.
     [SerializeField] private LayerMask enemyLayer;
+
+    public UnityEvent OnHit;
 
     // track last hit time per enemy so one pass doesn't spam damage every frame
     private readonly Dictionary<Collider2D, float> lastHitTime = new();
@@ -23,6 +26,7 @@ public class MeleeOrbitWeapon : MonoBehaviour
 
         float multiplier = PlayerStats.Instance != null ? PlayerStats.Instance.DamageMultiplier : 1f;
         health.TakeDamage(Mathf.Max(1, Mathf.RoundToInt(baseDamage * multiplier)));
+        OnHit?.Invoke();
     }
 
     private void OnTriggerExit2D(Collider2D other)

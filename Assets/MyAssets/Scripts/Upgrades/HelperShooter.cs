@@ -1,10 +1,13 @@
-using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class HelperShooter : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private GameObject projectilePrefab;
+
+    [Header("Events")]
+    public UnityEvent OnShoot;
 
     [Header("Targeting")]
     [SerializeField] private LayerMask enemyLayer;
@@ -45,5 +48,7 @@ public class HelperShooter : MonoBehaviour
 
         if (proj != null && proj.TryGetComponent<Projectile>(out Projectile p))
             p.Initialize(dir);
+
+        OnShoot?.Invoke();
     }
 }

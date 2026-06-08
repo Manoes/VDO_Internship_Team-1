@@ -1,10 +1,14 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerRandomAutoShooter : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private PlayerAttackRange attackRange;
     [SerializeField] private GameObject projectilePrefab;
+
+    [Header("Events")]
+    public UnityEvent OnShoot;
 
     [Header("Targeting")]
     [SerializeField] private LayerMask enemyLayer;
@@ -61,6 +65,8 @@ public class PlayerRandomAutoShooter : MonoBehaviour
 
         if (projectile.TryGetComponent<Projectile>(out Projectile projectileObject))
             projectileObject.Initialize(direction);
+
+        OnShoot?.Invoke();
     }
 
     private void OnDrawGizmosSelected()

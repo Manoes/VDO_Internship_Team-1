@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class LaserOrbitWeapon : MonoBehaviour
 {
@@ -7,6 +8,8 @@ public class LaserOrbitWeapon : MonoBehaviour
     [SerializeField] private float     rotationSpeed    = 180f; // degrees per second
     [SerializeField] private float     damageCooldown   = 0.15f; //seconds before hitting same enemy again.
     [SerializeField] private LayerMask enemyLayer;
+
+    public UnityEvent OnHit;
 
     private Transform playerTransform;
     private readonly Dictionary<Collider2D, float> lastHitTime = new();
@@ -38,6 +41,7 @@ public class LaserOrbitWeapon : MonoBehaviour
 
         float multiplier = PlayerStats.Instance != null ? PlayerStats.Instance.DamageMultiplier : 1f;
         health.TakeDamage(Mathf.Max(1, Mathf.RoundToInt(baseDamage * multiplier)));
+        OnHit?.Invoke();
     }
 
     private void OnTriggerExit2D(Collider2D other) => lastHitTime.Remove(other);
