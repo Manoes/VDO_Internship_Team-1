@@ -25,7 +25,6 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private EnemySpawnData[] enemies;
 
     [Header("Spawning")]
-    [SerializeField] private int maxAliveEnemies = 80;
     [SerializeField] private float spawnRadius = 10f;
     [SerializeField] private float baseSpawnInterval = 1.5f;
     [SerializeField] private float minSpawnInterval = 0.25f;
@@ -65,8 +64,6 @@ public class EnemySpawner : MonoBehaviour
 
     void Update()
     {
-        CleanupAliveEnemies();
-
         if (!spawningEnabled) return;
         if (player == null) return;
 
@@ -79,31 +76,17 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    private void CleanupAliveEnemies()
-    {
-        aliveEnemies.RemoveAll(enemy => enemy == null || !enemy.activeInHierarchy);
-    }
-
     private void SpawnWave()
     {
         int amount = GetEnemiesPerSpawn();
 
         for (int i = 0; i < amount; i++)
-        {
-            if(aliveEnemies.Count >= maxAliveEnemies)
-                break;
-
             StartCoroutine(SpawnEnemyRoutine());
-        }
-            
     }
 
     private IEnumerator SpawnEnemyRoutine()
     {
         if(spawningEnabled == false) yield break;
-
-        if(aliveEnemies.Count >= maxAliveEnemies)
-            yield break;
 
         GameObject prefab = GetRandomEnemyForLevel();
 
@@ -239,8 +222,11 @@ public class EnemySpawner : MonoBehaviour
 
         if (IsBossLevel())
         {
-            if(bossSpawner != null)
+            if (bossSpawner != null)
+            {
+                bossSpawner.OnBossWarning?.Invoke();
                 bossSpawner.SpawnRandomBoss(currentLevel);
+            }
             else
                 Debug.LogWarning("[EnemySpawner] Boss Level reached, but no BossSpawner assigned.");
         }
