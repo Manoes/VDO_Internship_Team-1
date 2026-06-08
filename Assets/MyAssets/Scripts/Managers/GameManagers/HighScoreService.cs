@@ -79,11 +79,12 @@ public class HighScoreService
 
     public void AddHighScore(string name, int score, int maxLevelCompleted)
     {
-        name = SanitizeName(name);
+        if(!IsHighScore(score, maxLevelCompleted))
+            return;        
 
         Data.entries.Add(new HighScoreEntry
         {
-            name = name,
+            name = SanitizeName(name),
             score = score,
             maxLevelCompleted = maxLevelCompleted
         });
@@ -96,7 +97,7 @@ public class HighScoreService
     {
         Data.entries = Data.entries
              .OrderByDescending(e => e.score)
-             .OrderByDescending(e => e.maxLevelCompleted)
+             .ThenByDescending(e => e.maxLevelCompleted)
              .Take(MaxEntries)
              .ToList();
     }
