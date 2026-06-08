@@ -8,7 +8,7 @@ public class Timer : Singleton<Timer>
     private float score = 0f;
     private bool timerRunning = true;
 
-    public int CurrentScore => Mathf.RoundToInt(score);
+    public int CurrentScore => Mathf.RoundToInt(score) * 10;
     
     void Update()
     {
@@ -20,7 +20,7 @@ public class Timer : Singleton<Timer>
 
     private void UpdateTimerDisplay()
     {
-        timerText.text = (Mathf.RoundToInt(score) * 10).ToString("D8");
+        timerText.text = CurrentScore.ToString("D8");
     }
 
     public void AddScore(int anmount)

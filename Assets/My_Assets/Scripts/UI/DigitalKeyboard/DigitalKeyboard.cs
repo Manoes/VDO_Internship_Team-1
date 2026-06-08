@@ -1,25 +1,24 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
-using System;
 
 public class DigitalKeyboard : MonoBehaviour
 {
-  [SerializeField] char[] letters;
-  [SerializeField] GameObject buttonPrefab;
-  [SerializeField] AudioSource audioSource;
-  [SerializeField] AudioClip soundEffect;
-  [SerializeField] float buttonSpawnDelay = 0.03f;
-  float previousPitch = 1;
+  [SerializeField] private char[] letters;
+  [SerializeField] private GameObject buttonPrefab;
+  [SerializeField] private AudioSource audioSource;
+  [SerializeField] private AudioClip soundEffect;
+  [SerializeField] private float buttonSpawnDelay = 0.03f;
 
-  //  [SerializeField] TMP_Text playerName;
-  //   static public TMP_Text staticPlayerName;
-  void Start()
+  private float previousPitch = 1;
+
+  private void Start()
   {
     StartCoroutine(SpawnButtons());
   }
 
-  IEnumerator SpawnButtons()
+  private IEnumerator SpawnButtons()
   {
     if (buttonPrefab == null)
     {
@@ -27,59 +26,53 @@ public class DigitalKeyboard : MonoBehaviour
       yield break;
     }
 
-    yield return new WaitForSeconds(buttonSpawnDelay);
+    yield return new WaitForSecondsRealtime(buttonSpawnDelay);
+
     previousPitch = 1f;
 
     for (int i = 0; i < letters.Length; i++)
     {
-      try
+      string letter = letters[i].ToString();
+
+      GameObject newButton = Instantiate(buttonPrefab, transform);
+      newButton.name = letter;
+
+      TMP_Text text = newButton.GetComponentInChildren<TMP_Text>();
+      if (text != null)
+        text.SetText(letter);
+
+      if (newButton.TryGetComponent<Button>(out Button button))
       {
-        string _letter = letters[i].ToString();
-        
-        // Instantiate with parent immediately is more efficient for UI
-        GameObject newButton = Instantiate(buttonPrefab, transform);
-        newButton.name = _letter;
+        string capturedLetter = letter;
 
-        // Use TryGetComponent to prevent the coroutine from crashing if a component is missing
-        if (newButton.TryGetComponent<ButtonSelect>(out var select))
-          select.SetAudioSource(audioSource);
-          
-        if (newButton.TryGetComponent<AddCharacter>(out var addChar))
-          addChar.SetAudioSource(audioSource);
-
-        TMP_Text text = newButton.GetComponentInChildren<TMP_Text>();
-        if (text != null)
-          text.SetText(_letter);
-
-        // Using RectTransform for UI ensures layout groups behave correctly
-        if (newButton.TryGetComponent<RectTransform>(out var rt))
+        button.onClick.RemoveAllListeners();
+        button.onClick.AddListener(() =>
         {
-          rt.localScale = Vector3.one;
-          rt.anchoredPosition = Vector2.zero;
-        }
-
-        // Clamp pitch to prevent audio errors and update sound playback
-        previousPitch = Mathf.Clamp(previousPitch + 0.115f, -3f, 3f);
-        if (audioSource != null && soundEffect != null && audioSource.isActiveAndEnabled)
-        {
-          PlayRandomSound(previousPitch);
-        }
-      }
-      catch (System.Exception e)
-      {
-        Debug.LogError($"[DigitalKeyboard] Exception during button spawn at index {i}: {e.Message}");
+          DeathUIManager.Instance.AddCharacter(capturedLetter);
+        });
       }
 
-      // A slightly longer delay helps Unity UI and the Audio system stay in sync
-      yield return new WaitForSeconds(0.01f);
+      if (newButton.TryGetComponent<ButtonSelect>(out var select))
+        select.SetAudioSource(audioSource);
+
+      if (newButton.TryGetComponent<RectTransform>(out var rt))
+      {
+        rt.localScale = Vector3.one;
+        rt.anchoredPosition = Vector2.zero;
+      }
+
+      previousPitch = Mathf.Clamp(previousPitch + 0.115f, -3f, 3f);
+
+      if (audioSource != null && soundEffect != null && audioSource.isActiveAndEnabled)
+        PlayRandomSound(previousPitch);
+
+      yield return new WaitForSecondsRealtime(0.01f);
     }
   }
-
 
   private void PlayRandomSound(float pitch)
   {
     audioSource.pitch = pitch;
     audioSource.PlayOneShot(soundEffect);
   }
-
 }
