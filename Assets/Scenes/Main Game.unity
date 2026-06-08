@@ -2823,7 +2823,6 @@ MonoBehaviour:
     unlockLevel: 5
     baseWeight: 4
     weightIncreasePerLevel: 1
-  maxAliveEnemies: 80
   spawnRadius: 10
   baseSpawnInterval: 1.5
   minSpawnInterval: 0.25
