@@ -27,7 +27,7 @@ public class DigitalKeyboard : MonoBehaviour
       yield break;
     }
 
-    yield return new WaitForSeconds(buttonSpawnDelay);
+    yield return new WaitForSecondsRealtime(buttonSpawnDelay);
     previousPitch = 1f;
 
     for (int i = 0; i < letters.Length; i++)
@@ -71,7 +71,7 @@ public class DigitalKeyboard : MonoBehaviour
       }
 
       // A slightly longer delay helps Unity UI and the Audio system stay in sync
-      yield return new WaitForSeconds(0.01f);
+      yield return new WaitForSecondsRealtime(0.01f);
     }
   }
 
