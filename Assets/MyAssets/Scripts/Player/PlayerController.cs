@@ -42,6 +42,8 @@ public class PlayerController : MonoBehaviour
 
     void Awake()
     {
+        LockCursor();
+
         rb = GetComponent<Rigidbody2D>();
 
         if (playerCollider == null)
@@ -49,6 +51,12 @@ public class PlayerController : MonoBehaviour
 
         if (upgradeUI == null)
             upgradeUI = FindFirstObjectByType<UpgradeUI>();
+    }
+
+    private void LockCursor()
+    {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     void FixedUpdate()

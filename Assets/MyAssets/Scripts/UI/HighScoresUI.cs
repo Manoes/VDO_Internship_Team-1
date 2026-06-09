@@ -33,7 +33,7 @@ public class HighScoresUI : MonoBehaviour
 
         for (int i = 0; i < scoreTexts.Length; i++)
         {
-            if(scoreTexts[i] == null) continue;
+            if(scoreTexts[i] == null) continue; 
 
             if(i < entries.Count)
                 scoreTexts[i].text = FormatEntry(entries[i]);

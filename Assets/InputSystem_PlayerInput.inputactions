@@ -513,7 +513,7 @@
                 {
                     "name": "",
                     "id": "54143d80-15e4-4225-8064-6837ebe47511",
-                    "path": "<Keyboard>/shift",
+                    "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -524,7 +524,7 @@
                 {
                     "name": "",
                     "id": "458f6bbe-77ff-4e1a-a863-1f063edb7866",
-                    "path": "<Keyboard>/1",
+                    "path": "<Keyboard>/leftCtrl",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -535,7 +535,7 @@
                 {
                     "name": "",
                     "id": "90c2b627-7f09-49c7-b4da-745b5fd6b18c",
-                    "path": "<Keyboard>/2",
+                    "path": "<Keyboard>/leftAlt",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -546,7 +546,7 @@
                 {
                     "name": "",
                     "id": "5d1862a2-5ed2-4b0a-8875-a59849916c9f",
-                    "path": "<Keyboard>/3",
+                    "path": "<Keyboard>/b",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -573,7 +573,7 @@
                     "name": "Submit",
                     "type": "Button",
                     "id": "7607c7b6-cd76-4816-beef-bd0341cfe950",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -923,6 +923,17 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse;Gamepad;Touch;Joystick;XR",
+                    "action": "Submit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "82c7fd02-cba2-497d-a709-e582cb944ccd",
+                    "path": "<Keyboard>/leftCtrl",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
                     "action": "Submit",
                     "isComposite": false,
                     "isPartOfComposite": false

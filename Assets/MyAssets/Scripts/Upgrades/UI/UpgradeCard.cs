@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System;
+using DG.Tweening;
 
 public class UpgradeCard : MonoBehaviour
 {
@@ -9,6 +10,11 @@ public class UpgradeCard : MonoBehaviour
     [SerializeField] private TextMeshProUGUI descriptionText;
     [SerializeField] private Image iconImage;
     [SerializeField] private Button button;
+
+    [Header("Animation")]
+    [SerializeField] private RectTransform cardRect;
+    [SerializeField] private float slideDistance = 150f;
+    [SerializeField] private float slideDuration = 0.35f;
 
     private UpgradeDefinition currentUpgrade;
     private Action<UpgradeDefinition> onSelected;
@@ -32,6 +38,27 @@ public class UpgradeCard : MonoBehaviour
         button.onClick.AddListener(HandleClick);
 
         Debug.Log($"[UpgradeCard] Listener added on {gameObject.name}");
+    }
+
+    public void PlayIntroAnimation(float delay)
+    {
+        cardRect.DOKill();
+
+        Vector2 finalPosition = cardRect.anchoredPosition;
+
+        cardRect.anchoredPosition = finalPosition + Vector2.down * slideDistance;
+
+        cardRect.localScale = Vector2.one * 0.8f;
+
+        Sequence sequence = DOTween.Sequence().SetUpdate(true);
+
+        sequence.AppendInterval(delay);
+
+        sequence.Append(
+            cardRect
+                .DOAnchorPos(finalPosition, slideDuration)
+                .SetEase(Ease.OutBack)
+        );
     }
 
     private void HandleClick()
